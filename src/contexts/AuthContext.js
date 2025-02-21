@@ -44,7 +44,7 @@ export function AuthProvider({ children }) {
   // function to save user to backend (runs only once)
   async function saveUserToBackend(accessToken) {
     try {
-      const response = await fetch("http://127.0.0.1:8000/auth/save_user", {
+      const response = await fetch("https://dev-captionino-api.onrender.com/auth/save_user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

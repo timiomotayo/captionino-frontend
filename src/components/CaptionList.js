@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from "next/image";
 
 export default function CaptionList({ captions }) {
   return (
@@ -8,7 +9,7 @@ export default function CaptionList({ captions }) {
       ) : (
         captions.map((caption, index) => (
           <div key={index} className='caption-list-div'>
-            <img 
+            <Image 
               src={caption.imageUrl} 
               alt="Thumbnail" 
               className='caption-list-image'

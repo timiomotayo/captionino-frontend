@@ -3,7 +3,6 @@ import { useAuth } from "@/context/AuthContext";
 import { Avatar } from "./Avatar";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button"
-import Image from "next/image";
 
 export default function NavBar() {
     const { user, signOut } = useAuth();
@@ -19,7 +18,7 @@ export default function NavBar() {
           <Link href="/dashboard"><h1 className="header-text">Captionino</h1></Link>
           <div className="navbar">
             <div className="navbar-left">
-              <Image src="/my_logo-bg.ico" className="app-logo" alt="app logo"/>
+              <img src="/my_logo-bg.ico" className="app-logo" alt="app logo"/>
             </div>
             <div className="navbar-right">
               <Link href="/profile"><Avatar src={user?.user_metadata.avatar_url || "/default-avatar.jpg"} alt="User Avatar" /></Link>

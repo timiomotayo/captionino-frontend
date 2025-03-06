@@ -89,7 +89,7 @@ export function AuthProvider({ children }) {
     } else {
       setUser(null); // remove user state on logout
       // setToken(null);
-      router.push("/auth"); // Redirect to login page
+      router.push("/"); // Redirect to login page
       isUserSaved.current = false; // set to false when user logs out
       console.log("User logged out!");
     }

@@ -5,15 +5,3 @@
     }
   }
 }
-
-// From documentation
-
-// {
-//   "compilerOptions": {
-//     "baseUrl": "src/",
-//     "paths": {
-//       "@/styles/*": ["styles/*"],
-//       "@/components/*": ["components/*"]
-//     }
-//   }
-// }

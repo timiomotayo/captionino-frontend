@@ -3,10 +3,26 @@ import React from 'react';
 import NavBar from '@/components/NavBar';
 import { useAuth } from '@/context/AuthContext';
 import Auth from '../auth/page';
+import { useState, useEffect } from 'react';
+import Loading from '@/components/Loading';
 
 
 export default function Profile() {
   const { user } = useAuth();
+  const [loading, setLoading] = useState(true)
+  
+    useEffect(() => {
+    
+        setTimeout(() => {
+          setLoading(false)
+        }, 1500)
+      }, [])
+    
+      if (loading) {
+        return (
+          <Loading />
+        )
+      }
   
   
   const formatTime = (utcTime) => {
@@ -18,9 +34,9 @@ export default function Profile() {
     <>
       {user ? (
         <>
-        <div className='profile-container'>
+        <div>
           <NavBar />
-          <div className='profile-div1'>
+          <div className='profile-container'>
             <h2>Profile:</h2>
             <li>Email: {user?.email}</li>
             <li>Joined: {formatTime(user?.created_at)}</li>

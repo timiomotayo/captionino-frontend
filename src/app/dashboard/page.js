@@ -1,25 +1,41 @@
 "use client";
 import NavBar from '@/components/NavBar';
-import CaptionGenerator from '@/components/CaptionGenerator';
+import CaptionDashboard from '@/components/CaptionDashboard';
 import { useAuth } from '@/context/AuthContext';
+import { useState, useEffect } from 'react';
+import Loading from '@/components/Loading';
 
 export default function Dashboard() {
 
   const { user } = useAuth();
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+  
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+  }, [])
+  
+  if (loading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <>
       {user ? (
         <>
-          <div>
+          <div className="min-h-screen bg-background">
             <NavBar />
-            <CaptionGenerator />
+            <CaptionDashboard />
           </div>
         </>
       ) : (
-        <div>
+        <div className="min-h-screen bg-background">
           <NavBar />
-          <CaptionGenerator />
+          <CaptionDashboard />
         </div>
       )}
     </>

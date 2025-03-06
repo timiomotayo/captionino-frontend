@@ -14,7 +14,7 @@ export default function Auth() {
     ): (
       <div className="auth-container">
       <Button variant="outline" onClick={signInWithGoogle} className="google-btn">
-        <MailOpen /> Continue with Google
+        <MailOpen className="mail-open" /> Continue with Google
       </Button>
     </div>
     )}

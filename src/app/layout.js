@@ -3,6 +3,9 @@ import "./globals.css";
 import '../styles/styles.css';
 import { AuthProvider } from "@/context/AuthContext";
 
+import { Inter } from "next/font/google"
+
+const inter = Inter({ subsets: ["latin"] })
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +19,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Captionino",
-  description: "Caption generation app by Timi Omotayo",
+  description: "Generate engaging captions for your images with AI Caption Generator by Timi Omotayo",
 };
 
 export default function RootLayout({ children }) {
@@ -24,7 +27,7 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${inter.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           {children}
         </body>

@@ -1,5 +1,4 @@
 "use client";
-import Auth from './auth/page';
 import { useAuth } from "@/context/AuthContext";
 import Dashboard from './dashboard/page';
 import Home from './home/page';

@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-// import Navbar from "@/components/Navbar"
 import Navbar from "./NavBar"
 import UploadTab from "@/components/UploadTab"
 import GenerateTab from "@/components/GenerateTab"
@@ -56,52 +55,55 @@ export default function CaptionDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <main className="container mx-auto px-4 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-4xl"
-        >
-          <Card className="border-border/30 bg-card shadow-lg">
-            <CardContent className="p-0">
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="upload">Upload</TabsTrigger>
-                  <TabsTrigger value="generate" disabled={!uploadedImage}>
-                    Generate
-                  </TabsTrigger>
-                  <TabsTrigger value="result" disabled={!generatedCaption}>
-                    Result
-                  </TabsTrigger>
-                </TabsList>
-                <div className="p-6">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeTab}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <TabsContent value="upload" className="mt-0">
-                        <UploadTab onImageUpload={handleImageUpload} />
-                      </TabsContent>
-                      <TabsContent value="generate" className="mt-0">
-                        <GenerateTab image={uploadedImage} onGenerate={handleGenerate} isGenerating={isGenerating} />
-                      </TabsContent>
-                      <TabsContent value="result" className="mt-0">
-                        <ResultTab image={uploadedImage} caption={generatedCaption} onNewImage={resetProcess} />
-                      </TabsContent>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </Tabs>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </main>
+    <div>
+      <Navbar />
+      <div className="min-h-screen bg-background">
+        <main className="container mx-auto px-4 py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto max-w-4xl"
+          >
+            <Card className="border-border/30 bg-card shadow-lg">
+              <CardContent className="p-0">
+                <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                  <TabsList className="grid w-full grid-cols-3">
+                    <TabsTrigger value="upload">Upload</TabsTrigger>
+                    <TabsTrigger value="generate" disabled={!uploadedImage}>
+                      Generate
+                    </TabsTrigger>
+                    <TabsTrigger value="result" disabled={!generatedCaption}>
+                      Result
+                    </TabsTrigger>
+                  </TabsList>
+                  <div className="p-6">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeTab}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <TabsContent value="upload" className="mt-0">
+                          <UploadTab onImageUpload={handleImageUpload} />
+                        </TabsContent>
+                        <TabsContent value="generate" className="mt-0">
+                          <GenerateTab image={uploadedImage} onGenerate={handleGenerate} isGenerating={isGenerating} />
+                        </TabsContent>
+                        <TabsContent value="result" className="mt-0">
+                          <ResultTab image={uploadedImage} caption={generatedCaption} onNewImage={resetProcess} />
+                        </TabsContent>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </Tabs>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </main>
+      </div>
     </div>
   )
 }

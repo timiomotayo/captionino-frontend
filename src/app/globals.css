@@ -12,11 +12,11 @@
 
 /* Fix/override the .next/ layout.css max-width configuration */
 @layer utilities {
-  .container {
+  /* .container {
     @media (width >= 80rem) {
       max-width: 100%;
     }
-  }
+  } */
   .text-balance {
     text-wrap: balance;
   }

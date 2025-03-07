@@ -2,8 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import '../styles/styles.css';
 import { AuthProvider } from "@/context/AuthContext";
+import { Inter } from "next/font/google";
+import ThemeProvider from "@/context/ThemeContext";
 
-import { Inter } from "next/font/google"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -25,11 +26,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <AuthProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
+        <head>
+        <script>
+          {`{(function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.classList.toggle("dark", theme === "dark");
+          })();}`}
+        </script>
+        </head>
         <body
           className={`${inter.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          {children}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </AuthProvider>

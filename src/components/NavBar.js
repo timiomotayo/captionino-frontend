@@ -13,34 +13,12 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { LogOut, User, Moon, Sun } from "lucide-react"
 import { useAuth } from "@/context/AuthContext";
+import { useTheme } from "@/context/ThemeContext"; // Import Theme Context
 
 export default function Navbar() {
   const { user, signOut } = useAuth();
   const [open, setOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(true)
-
-  useEffect(() => {
-      // Load theme from localStorage on mount
-      if (typeof window !== "undefined") {
-        const savedTheme = localStorage.getItem("theme")
-        if (savedTheme === "dark") {
-          document.documentElement.classList.add("dark")
-          setIsDarkMode(true)
-        } else {
-          document.documentElement.classList.remove("dark")
-          setIsDarkMode(false)
-        }
-      }
-
-    }, [])
-
-    // Toggle theme and save to localStorage
-    const toggleDarkMode = () => {
-      const newTheme = isDarkMode ? "light" : "dark"
-      localStorage.setItem("theme", newTheme) // Save theme preference
-      document.documentElement.classList.toggle("dark", newTheme === "dark")
-      setIsDarkMode(newTheme === "dark")
-    }
+  const { theme, toggleTheme } = useTheme(); // Use theme and toggle function
   
   return (
     <header className="border-b border-border/40 bg-card/90 backdrop-blur-md outline outline-pink-800">
@@ -72,8 +50,8 @@ export default function Navbar() {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={toggleDarkMode} className="flex cursor-pointer items-center">
-              {isDarkMode ? (
+            <DropdownMenuItem onClick={toggleTheme} className="flex cursor-pointer items-center">
+              {theme === "dark" ? (
                 <>
                   <Sun className="mr-2 h-4 w-4" />
                   <span>Light Mode</span>

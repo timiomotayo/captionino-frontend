@@ -58,7 +58,7 @@ export default function ContactPage() {
             <div className="space-y-2 text-center">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-text">Contact & Support</h1>
               <p className="mx-auto max-w-[700px] text-gray-800 dark:text-gray-400 md:text-xl">
-                Have questions or need assistance? We're here to help.
+                {"Have questions or need assistance? We're here to help."}
               </p>
             </div>
 
@@ -66,8 +66,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <h2 className="text-2xl font-bold text-text">Get in Touch</h2>
                 <p className="text-gray-800 dark:text-gray-400">
-                  We'd love to hear from you. Whether you have a question about features, pricing, or anything else, our
-                  team is ready to answer all your questions.
+                  {"We'd love to hear from you. Whether you have a question about features, pricing, or anything else, our team is ready to answer all your questions."}
                 </p>
 
                 <div className="space-y-4">
@@ -101,13 +100,13 @@ export default function ContactPage() {
                 <CardHeader>
                   <CardTitle>Send a Message</CardTitle>
                   <CardDescription className="text-gray-800 dark:text-gray-400">
-                    Fill out the form below and we'll get back to you as soon as possible.
+                    {"Fill out the form below and we'll get back to you as soon as possible."}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   {submitted ? (
                     <div className="rounded-lg bg-green-50 dark:bg-green-900/20 p-4 text-green-600 dark:text-green-400">
-                      <p>Thank you for your message! We'll get back to you soon.</p>
+                      <p>{"Thank you for your message! We'll get back to you soon."}</p>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-4">

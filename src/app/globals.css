@@ -17,11 +17,11 @@ body {
 
 /* Fix/override .next/ layout.css */
 @layer utilities {
-  .container {
+  /* .container {
     @media (width >= 80rem) {
       max-width: 100%;
     }
-  }
+  } */
 
   b, strong {
     font-weight: bolder;

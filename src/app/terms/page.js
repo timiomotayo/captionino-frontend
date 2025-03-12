@@ -92,8 +92,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-2xl font-bold text-text mb-2">7. Disclaimer of Warranties</h2>
                 <p className="text-gray-800 dark:text-gray-400">
-                  The service is provided "as is" and "as available" without warranties of any kind, either express or
-                  implied. We do not guarantee that the service will be uninterrupted, secure, or error-free.
+                  {"The service is provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. We do not guarantee that the service will be uninterrupted, secure, or error-free."}
                 </p>
               </section>
 

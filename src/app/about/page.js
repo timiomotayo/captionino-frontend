@@ -168,20 +168,16 @@ export default function AboutPage() {
                 <h2 className="text-2xl font-bold text-text">Our Values</h2>
                 <ul className="list-circle dark:marker:text-white pl-6 space-y-2">
                   <li>
-                    <strong className="inline text-gray-800 dark:text-gray-400">Innovation:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">We continuously improve our AI models to provide the best caption
-                    generation experience.</p>
+                    <strong className="inline text-gray-800 dark:text-gray-400">Innovation:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">{"We continuously improve our AI models to provide the best caption generation experience."}</p>
                   </li>
                   <li>
-                    <strong className="inline text-gray-800 dark:text-gray-400">Accessibility:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">We believe powerful AI tools should be accessible to everyone, not
-                    just large corporations.</p>
+                    <strong className="inline text-gray-800 dark:text-gray-400">Accessibility:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">{"We believe powerful AI tools should be accessible to everyone, not just large corporations."}</p>
                   </li>
                   <li>
-                    <strong className="inline text-gray-800 dark:text-gray-400">Quality:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">We're committed to generating high-quality, engaging captions that enhance
-                    your content.</p>
+                    <strong className="inline text-gray-800 dark:text-gray-400">Quality:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">{"We're committed to generating high-quality, engaging captions that enhance your content."}</p>
                   </li>
                   <li>
-                    <strong className="inline text-gray-800 dark:text-gray-400">Privacy:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">We respect your data and privacy, ensuring your uploads are secure and
-                    protected.</p>
+                    <strong className="inline text-gray-800 dark:text-gray-400">Privacy:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">{"We respect your data and privacy, ensuring your uploads are secure and protected."}</p>
                   </li>
                 </ul>
               </div>

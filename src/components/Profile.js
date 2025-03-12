@@ -307,7 +307,7 @@ export default function ProfilePage() {
                       {[1, 2, 3, 4].map((item) => (
                         <div key={item} className="flex items-start space-x-4">
                           <div className="relative h-12 w-12 overflow-hidden rounded-md border border-gray-200 dark:border-gray-900">
-                            <Image className="h-4 w-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-muted-foreground" />
+                            <Image alt="Caption image" className="h-4 w-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-muted-foreground" />
                           </div>
                           <div className="flex-1 space-y-1">
                             <p className="font-medium text-text">Caption Generated</p>

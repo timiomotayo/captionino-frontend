@@ -32,7 +32,7 @@ export default function Navbar() {
           <motion.div initial={{ rotate: -10 }} animate={{ rotate: 0 }} transition={{ duration: 0.5 }}>
             <div className="flex h-8 w-8 items-center justify-center rounded-lg text-primary-foreground">
             {/* <span className="text-4xl font-bold text-center">n</span> */}
-            <img src="/favicon-pink.png"></img>
+            <img src="/favicon-pink.png" alt="App logo pink"></img>
             </div>
           </motion.div>
           {/* <span className="text-xl font-bold text-foreground">Captionino</span> */}

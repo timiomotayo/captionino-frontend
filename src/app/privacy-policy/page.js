@@ -18,9 +18,7 @@ export default function PrivacyPolicyPage() {
               <section>
                 <h2 className="text-xl text-text font-bold mb-2">1. Introduction</h2>
                 <p className="text-gray-800 dark:text-gray-400">
-                  Welcome to Captionino ("we," "our," or "us"). We are committed to protecting your privacy and handling
-                  your data in an open and transparent manner. This Privacy Policy explains how we collect, use,
-                  disclose, and safeguard your information when you use our caption generation service.
+                  {"Welcome to Captionino (\"we,\" \"our,\" or \"us\"). We are committed to protecting your privacy and handling your data in an open and transparent manner. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our caption generation service."}
                 </p>
               </section>
 
@@ -101,17 +99,14 @@ export default function PrivacyPolicyPage() {
               <section>
                 <h2 className="text-xl font-bold text-text mb-2">8. Children's Privacy</h2>
                 <p className="text-gray-800 dark:text-gray-400">
-                  Our service is not intended for use by children under the age of 13. We do not knowingly collect
-                  personally identifiable information from children under 13. If you are a parent or guardian and you
-                  are aware that your child has provided us with personal data, please contact us.
+                  {"Our service is not intended for use by children under the age of 13. We do not knowingly collect personally identifiable information from children under 13. If you are a parent or guardian and you are aware that your child has provided us with personal data, please contact us."}
                 </p>
               </section>
 
               <section>
                 <h2 className="text-xl font-bold text-text mb-2">9. Changes to This Privacy Policy</h2>
                 <p className="text-gray-800 dark:text-gray-400">
-                  We may update our Privacy Policy from time to time. We will notify you of any changes by posting the
-                  new Privacy Policy on this page and updating the "Last updated" date.
+                  {"We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date."}
                 </p>
               </section>
 

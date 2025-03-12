@@ -38,14 +38,12 @@ export default function UploadTab({ onImageUpload }) {
   }
 
   return (
-    <div className="flex flex-col items-center gap-6 py-8">
-      <h2 className="text-2xl font-semibold text-foreground">Upload an Image</h2>
-      <p className="text-center text-muted-foreground">
-        Upload an image to generate a caption for your social media or product description
-      </p>
+    <div className="flex flex-col items-center gap-4 justify-center h-[350px]">
+      <h2 className="text-xl font-semibold text-text">Upload an Image</h2>
+      <p className="text-center text-gray-800 dark:text-gray-400 text-sm">Upload an image to generate a caption</p>
 
       <motion.div
-        className={`flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-6 transition-colors ${
+        className={`flex h-52 w-80 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-900 p-4 transition-colors ${
           isDragging ? "border-primary bg-primary/5" : "border-border"
         }`}
         whileHover={{ scale: 1.01 }}
@@ -55,15 +53,15 @@ export default function UploadTab({ onImageUpload }) {
         onClick={handleButtonClick}
       >
         <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" className="hidden" />
-        <div className="flex flex-col items-center gap-4">
-          <div className="rounded-full bg-primary/10 p-4">
-            <ImageIcon className="h-10 w-10 text-primary" />
+        <div className="flex flex-col items-center gap-3">
+          <div className="rounded-full bg-primary/10 p-3">
+            <ImageIcon className="h-8 w-8 text-primary" />
           </div>
           <div className="text-center">
             <p className="text-sm font-medium text-foreground">Drag and drop your image here</p>
             <p className="mt-1 text-xs text-muted-foreground">or click to browse files</p>
           </div>
-          <Button variant="outline" size="sm" className="mt-2">
+          <Button variant="outline" size="sm" className="mt-1">
             <Upload className="mr-2 h-4 w-4" />
             Select Image
           </Button>
@@ -74,4 +72,3 @@ export default function UploadTab({ onImageUpload }) {
     </div>
   )
 }
-

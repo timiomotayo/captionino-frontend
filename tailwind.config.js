@@ -17,7 +17,13 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: "var(--font-geist-sans), sans-serif",
+        mono: "var(--font-geist-mono), monospace",
+      },
       colors: {
+        profile: "oklch(var(--profile))", /* custom */
+        text: "oklch(var(--text))", /* custom */
         border: "oklch(var(--border))",
         input: "oklch(var(--input))",
         ring: "oklch(var(--ring))",
@@ -73,5 +79,13 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    function ({ addVariant }) {
+      addVariant('dark', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `:is(.dark .${className})`
+        })
+      })
+    },
+    require("tailwindcss-animate")]
 };

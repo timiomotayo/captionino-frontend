@@ -4,7 +4,7 @@ import '../styles/styles.css';
 import { AuthProvider } from "@/context/AuthContext";
 import { Inter } from "next/font/google";
 import ThemeProvider from "@/context/ThemeContext";
-
+// import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
         <body
           className={`${inter.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <ThemeProvider>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             {children}
           </ThemeProvider>
         </body>

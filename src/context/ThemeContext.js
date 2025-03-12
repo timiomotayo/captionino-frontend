@@ -1,4 +1,4 @@
-"use client"; // Ensure this is a Client Component
+"use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
 

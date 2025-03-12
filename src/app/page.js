@@ -1,7 +1,7 @@
 "use client";
 import { useAuth } from "@/context/AuthContext";
-import Dashboard from './dashboard/page';
-import Home from './home/page';
+import DashboardPage from './dashboard/page';
+import Home from '../components/Home';
 
 
 export default function LandingPage() {
@@ -12,7 +12,7 @@ export default function LandingPage() {
     <>
       {user ? (
         <>
-          <Dashboard />
+          <DashboardPage />
         </>
       ) : (
         <Home />

@@ -1,11 +1,11 @@
 "use client";
-import NavBar from '@/components/NavBar';
+
 import CaptionDashboard from '@/components/CaptionDashboard';
 import { useAuth } from '@/context/AuthContext';
 import { useState, useEffect } from 'react';
 import Loading from '@/components/Loading';
 
-export default function Dashboard() {
+export default function DashboardPage() {
 
   const { user } = useAuth();
   const [loading, setLoading] = useState(true)
@@ -14,7 +14,7 @@ export default function Dashboard() {
   
     setTimeout(() => {
       setLoading(false)
-    }, 3000)
+    }, 200)
   }, [])
   
   if (loading) {
@@ -28,13 +28,11 @@ export default function Dashboard() {
       {user ? (
         <>
           <div className="min-h-screen bg-background">
-            <NavBar />
             <CaptionDashboard />
           </div>
         </>
       ) : (
         <div className="min-h-screen bg-background">
-          <NavBar />
           <CaptionDashboard />
         </div>
       )}

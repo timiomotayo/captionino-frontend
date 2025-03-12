@@ -1,10 +1,4 @@
-/* General */
-
-
-/************************************ All screen resolution **************************************************/
-
 /* Container */
-
 .auth-container {
     display: flex;
     justify-content: center;
@@ -13,7 +7,6 @@
   }
   
   /* Button */
-
   .google-btn {
     background-color: #131a26;
     color: white;
@@ -32,7 +25,6 @@
 
   
   /* Caption list */
-
 .caption-list {
   margin-top: 10px;
 }
@@ -50,33 +42,5 @@
   height: 60px;
   object-fit: cover;
   margin-right: 1rem;
-}
-
-
-/* Profile */
-
-.profile-container {
-  text-align: center;
-  background-color: #e600a4;
-  padding: 1rem;
-  margin-top: 10rem;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 10px;
-}
-
-
-.profile-container, h2 {
-  text-align: center;
-}
-
-.profile-container, li {
-  text-align: left;
-  font-weight: bolder;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  list-style: none;
-  border-radius: 10px;
-  color: white;
 }
 

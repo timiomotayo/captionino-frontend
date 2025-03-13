@@ -35,7 +35,7 @@ export default function ProfilePage() {
   
   const [profileData, setProfileData] = useState({
     fullname: fullName,
-    username: `${firstName}${lastName}${firstName.length}${lastName.length}`,
+    username: `${firstName}${lastName}${firstName?.length}${lastName?.length}`,
     firstname: firstName,
     lastname: lastName,
     email: user?.email || "",
@@ -72,7 +72,7 @@ export default function ProfilePage() {
       <Navbar />
 
       <main className="flex-1 py-8">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6">
           <div className="mx-auto max-w-4xl space-y-8">
             <Card className="p-6 border border-gray-200 dark:border-gray-900">
               <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">

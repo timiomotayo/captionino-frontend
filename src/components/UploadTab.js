@@ -38,7 +38,7 @@ export default function UploadTab({ onImageUpload }) {
   }
 
   return (
-    <div className="flex flex-col items-center gap-4 justify-center h-[350px]">
+    <div className="flex flex-col items-center gap-4 justify-center h-[400px] overflow-auto short-scrollbar">
       <h2 className="text-xl font-semibold text-text">Upload an Image</h2>
       <p className="text-center text-gray-800 dark:text-gray-400 text-sm">Upload an image to generate a caption</p>
 

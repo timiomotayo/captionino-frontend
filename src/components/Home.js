@@ -15,7 +15,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="py-20 md:py-28">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
@@ -65,7 +65,7 @@ export default function Home() {
 
       {/* Features Section */}
       <section className="py-12 md:py-20 border-t border-gray-100 dark:border-gray-900 dark:bg-muted/30">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6"> {/**container  */}
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl text-gray-900 dark:text-white">Features</h2>
@@ -106,7 +106,7 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <section className="py-12 md:py-20 bg-gray-50 dark:bg-background">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6"> {/**container  */}
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl text-gray-900 dark:text-white">What Our Users Say</h2>
@@ -150,7 +150,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-12 md:py-20 border-t border-gray-100 dark:border-gray-900 dark:bg-muted/30">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6"> {/**container  */}
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl text-text">Ready to Get Started?</h2>

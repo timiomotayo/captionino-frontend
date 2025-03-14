@@ -28,21 +28,15 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Link href="/dashboard">
-                  <Button size="sm" className="gap-1 rounded-xl transition-transform transform hover:scale-97">
-                    Get Started For Free <ArrowRight className="h-4 w-4 ml-1" />
-                  </Button>
-                </Link>
-                <Link href="/auth">
-                  <Button size="sm" variant="outline" className="rounded-xl transition-transform transform hover:scale-97">
-                    Sign In
-                  </Button>
-                </Link>
-                <Link href="/auth">
-                  <Button size="sm" variant="outline" className="rounded-xl transition-transform transform hover:scale-97">
-                    Sign Up
-                  </Button>
-                </Link>
+                <Button size="sm" className="gap-1 rounded-xl transition-transform transform hover:scale-97">
+                  <Link href="/dashboard">Get Started For Free</Link> <ArrowRight className="h-4 w-4 ml-1" />
+                </Button>
+                <Button size="sm" variant="outline" className="rounded-xl transition-transform transform hover:scale-97">
+                  <Link href="/auth">Sign In</Link>
+                </Button>
+                <Button size="sm" variant="outline" className="rounded-xl transition-transform transform hover:scale-97">
+                  <Link href="/auth">Sign Up</Link>
+                </Button>
               </div>
             </div>
             <motion.div

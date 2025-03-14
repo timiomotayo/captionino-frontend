@@ -62,19 +62,19 @@ export default function Navbar() {
           </SheetTrigger>
           <SheetContent side="left" className="w-[180px] sm:w-[150px] bg-white dark:bg-background">
             <SheetTitle></SheetTitle>
-            {user ? (
-              <>
-                <Link className="h-9 w-9" href="/profile">
-                  <Avatar className="h-9 w-9 cursor-pointer border-2 border-primary transition-all hover:border-opacity-100">
-                    <AvatarImage src={user?.user_metadata.avatar_url} alt="User Avatar" />
-                    <AvatarFallback><img src="/default-avatar.jpg" alt="User Avatar"></img></AvatarFallback>
-                  </Avatar>
-                </Link>
-              </>
-            ) : (
-              <></>
-            )}
-            <nav className="flex flex-col gap-4 mt-8">
+            <nav className="flex flex-col items-center gap-4 mt-8">
+              {user ? (
+                <>
+                  <Link className="h-9 w-9" href="/profile">
+                    <Avatar className="h-9 w-9 cursor-pointer border-2 border-primary transition-all hover:border-opacity-100">
+                      <AvatarImage src={user?.user_metadata.avatar_url} alt="User Avatar" />
+                      <AvatarFallback><img src="/default-avatar.jpg" alt="User Avatar"></img></AvatarFallback>
+                    </Avatar>
+                  </Link>
+                </>
+              ) : (
+                <></>
+              )}
               <Link
                 href="/"
                 className="text-sm font-medium text-text hover:text-primary px-2 py-1 rounded-md hover:bg-accent"
@@ -111,7 +111,7 @@ export default function Navbar() {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="justify-start w-20 rounded-xl h-8.5 transition-transform transform hover:scale-97"
+                      className="rounded-xl h-8.5 transition-transform transform hover:scale-97"
                       onClick={signOut}
                     >
                       Logout
@@ -140,6 +140,7 @@ export default function Navbar() {
                 )}
                 {/* Theme Toggle Button - Always visible */}
                 <Button
+                  className="self-center"
                   variant="ghost"
                   size="icon"
                   // onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

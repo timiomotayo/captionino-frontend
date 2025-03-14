@@ -61,7 +61,7 @@ export default function UploadTab({ onImageUpload }) {
             <p className="text-sm font-medium text-foreground">Drag and drop your image here</p>
             <p className="mt-1 text-xs text-muted-foreground">or click to browse files</p>
           </div>
-          <Button variant="outline" size="sm" className="mt-1">
+          <Button variant="outline" size="sm" className="mt-1 transition-transform transform hover:scale-97">
             <Upload className="mr-2 h-4 w-4" />
             Select Image
           </Button>

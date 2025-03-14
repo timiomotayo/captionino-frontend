@@ -29,17 +29,17 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link href="/dashboard">
-                  <Button size="sm" className="gap-1">
+                  <Button size="sm" className="gap-1 rounded-xl transition-transform transform hover:scale-97">
                     Get Started For Free <ArrowRight className="h-4 w-4 ml-1" />
                   </Button>
                 </Link>
                 <Link href="/auth">
-                  <Button size="sm" variant="outline">
+                  <Button size="sm" variant="outline" className="rounded-xl transition-transform transform hover:scale-97">
                     Sign In
                   </Button>
                 </Link>
                 <Link href="/auth">
-                  <Button size="sm" variant="outline">
+                  <Button size="sm" variant="outline" className="rounded-xl transition-transform transform hover:scale-97">
                     Sign Up
                   </Button>
                 </Link>
@@ -51,7 +51,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mx-auto w-full max-w-[500px] lg:ml-auto"
             >
-              <div className="aspect-video overflow-hidden rounded-xl bg-gray-100 border border-gray-200 shadow-xl">
+              <div className="aspect-video overflow-hidden rounded-xl bg-gray-100 border border-gray-200 shadow-xl transition-transform transform hover:scale-97">
                 <img
                   src="/placeholder.svg?height=500&width=800"
                   alt="Captionino dashboard preview"
@@ -65,7 +65,7 @@ export default function Home() {
 
       {/* Features Section */}
       <section className="py-12 md:py-20 border-t border-gray-100 dark:border-gray-900 dark:bg-muted/30">
-        <div className="px-4 md:px-6"> {/**container  */}
+        <div className="px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl text-gray-900 dark:text-white">Features</h2>
@@ -75,14 +75,14 @@ export default function Home() {
             </div>
           </div>
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 lg:gap-12 mt-12">
-            <div className="flex flex-col items-center space-y-2 rounded-lg p-4 border border-gray-100 dark:border-gray-900 shadow-sm">
+            <div className="flex flex-col items-center space-y-2 p-4 border border-gray-100 dark:border-gray-900 shadow-sm rounded-xl transition-transform transform hover:scale-97">
               <div className="rounded-full bg-primary/10 p-4">
                 <ImageIcon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white">Easy Upload</h3>
               <p className="text-center text-gray-800 dark:text-gray-400">Drag and drop your images or select from your device</p>
             </div>
-            <div className="flex flex-col items-center space-y-2 rounded-lg p-4 border border-gray-100 dark:border-gray-900 shadow-sm">
+            <div className="flex flex-col items-center space-y-2 p-4 border border-gray-100 dark:border-gray-900 shadow-sm rounded-xl transition-transform transform hover:scale-97">
               <div className="rounded-full bg-primary/10 p-4">
                 <Sparkles className="h-6 w-6 text-primary" />
               </div>
@@ -91,7 +91,7 @@ export default function Home() {
                 Advanced AI generates captions tailored to your content
               </p>
             </div>
-            <div className="flex flex-col items-center space-y-2 rounded-lg p-4 border border-gray-100 dark:border-gray-900 shadow-sm">
+            <div className="flex flex-col items-center space-y-2 p-4 border border-gray-100 dark:border-gray-900 shadow-sm rounded-xl transition-transform transform hover:scale-97">
               <div className="rounded-full bg-primary/10 p-4">
                 <MessageSquare className="h-6 w-6 text-primary" />
               </div>
@@ -160,7 +160,7 @@ export default function Home() {
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
               <Link href="/dashboard">
-                <Button size="sm" className="w-full">
+                <Button size="sm" className="w-full rounded-xl transition-transform transform hover:scale-97">
                   Try Captionino Now
                 </Button>
               </Link>

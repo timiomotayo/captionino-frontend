@@ -184,7 +184,7 @@ export default function AboutPage() {
 
               <div className="flex justify-center">
                 <Link href="/contact">
-                  <Button size="sm">Get in Touch</Button>
+                  <Button size="sm" className="rounded-xl transition-transform transform hover:scale-97">Get in Touch</Button>
                 </Link>
               </div>
             </div>

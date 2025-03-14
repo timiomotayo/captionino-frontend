@@ -150,7 +150,7 @@ export default function ContactPage() {
                 </CardContent>
                 <CardFooter>
                   {!submitted && (
-                    <Button size="sm" type="submit" onClick={handleSubmit} disabled={isSubmitting} className="w-full">
+                    <Button size="sm" type="submit" onClick={handleSubmit} disabled={isSubmitting} className="w-full rounded-xl transition-transform transform hover:scale-97">
                       {isSubmitting ? (
                         <>
                           <svg

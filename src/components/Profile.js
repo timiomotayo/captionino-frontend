@@ -82,7 +82,7 @@ export default function ProfilePage() {
 
                   {/* <AvatarFallback>TO</AvatarFallback> */}
                 </Avatar>
-                  <Button size="icon" variant="secondary" className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full">
+                  <Button size="icon" variant="secondary" className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full cursor-default">
                     <Camera className="h-4 w-4" />
                   </Button>
                 </div>
@@ -158,7 +158,7 @@ export default function ProfilePage() {
                     </form>
                   </CardContent>
                   <CardFooter className="flex justify-end">
-                    <Button size="sm" onClick={handleSave} disabled={saving}>
+                    <Button size="sm" onClick={handleSave} disabled={saving} className="rounded-xl transition-transform transform hover:scale-97">
                       {saving ? (
                         <>
                           <svg
@@ -227,7 +227,7 @@ export default function ProfilePage() {
                     </div> */}
                   </CardContent>
                   <CardFooter className="flex justify-end">
-                    <Button size="sm">
+                    <Button size="sm" className="rounded-xl transition-transform transform hover:scale-97">
                       <Save className="mr-2 h-4 w-4" />
                       Update Password
                     </Button>
@@ -288,7 +288,7 @@ export default function ProfilePage() {
                     </div>
                   </CardContent>
                   <CardFooter className="flex justify-end">
-                    <Button size="sm">
+                    <Button size="sm" className="rounded-xl transition-transform transform hover:scale-97">
                       <Save className="mr-2 h-4 w-4" />
                       Save Preferences
                     </Button>
@@ -322,7 +322,7 @@ export default function ProfilePage() {
                     </div>
                   </CardContent>
                   <CardFooter className="flex justify-center">
-                    <Button className="border border-gray-200 dark:border-gray-900" size="sm" variant="outline">View All Activity</Button>
+                    <Button className="border border-gray-200 dark:border-gray-900 rounded-xl transition-transform transform hover:scale-97" size="sm" variant="outline">View All Activity</Button>
                   </CardFooter>
                 </Card>
               </TabsContent>

@@ -35,7 +35,7 @@ export default function ResultTab({ image, caption, onNewImage, onBack }) {
           <div className="relative">
             <Card className="border-border/50">
               <CardContent className="p-4">
-                <Button variant="ghost" size="icon" className="absolute right-2 top-2" onClick={handleCopy}>
+                <Button variant="ghost" size="icon" className="absolute right-2 top-2 transition-transform transform hover:scale-97" onClick={handleCopy}>
                   {copied ? <Check className="h-4 w-4 text-foreground" /> : <Copy className="h-4 w-4" />}
                 </Button>
                 <p className="break-all overflow-hidden mt-4 whitespace-pre-line text-sm font-mono bg-gray-100 dark:bg-gray-800 p-3 rounded border border-gray-200 dark:border-gray-700">
@@ -50,11 +50,11 @@ export default function ResultTab({ image, caption, onNewImage, onBack }) {
       <Separator className="my-8" />
 
       <div className="flex justify-between">
-        <Button size="sm" variant="outline" onClick={onBack}>
+        <Button size="sm" variant="outline" onClick={onBack} className="transition-transform transform hover:scale-97">
           Back
         </Button>
         <motion.div whileTap={{ scale: 0.97 }}>
-          <Button size="sm" onClick={onNewImage}>
+          <Button size="sm" onClick={onNewImage} className="transition-transform transform hover:scale-97">
             <ImagePlus className="mr-2 h-4 w-4" />
             Create New Caption
           </Button>

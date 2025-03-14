@@ -4,55 +4,48 @@ import { useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { LogOut, User, Moon, Sun, Menu } from "lucide-react"
-import { useAuth } from "@/context/AuthContext";
-// import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
+import { Moon, Sun, Menu } from "lucide-react"
+// import { useTheme } from "next-themes"
+import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 
 export default function Navbar() {
-  const { user, signOut } = useAuth();
   // const { theme, setTheme } = useTheme()
-  const [open, setOpen] = useState(false)
+  const { user, signOut } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const [sheetOpen, setSheetOpen] = useState(false)
 
+
   return (
-    <header className="border-b border-gray-200 dark:border-gray-900 shadow-sm backdrop-blur-md bg-white dark:bg-background">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header className="border-b border-gray-200 dark:border-gray-900 bg-white dark:bg-background shadow-sm">
+      <div className="container mx-auto flex h-12 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <motion.div initial={{ rotate: -10 }} animate={{ rotate: 0 }} transition={{ duration: 0.5 }}>
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg text-primary-foreground">
-            {/* <span className="text-4xl font-bold text-center">n</span> */}
-            <img src="/favicon-pink.png" alt="App logo pink"></img>
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg text-primary-foreground transition-transform transform hover:scale-97">
+              {/* <span className="text-4xl font-bold text-center">n</span> */}
+              <img src="/favicon-pink.png" alt="App logo pink"></img>
             </div>
           </motion.div>
           {/* <span className="text-xl font-bold text-foreground">Captionino</span> */}
         </Link>
 
-        {/* Center Navigation */}
+        {/* Center Navigation - Desktop */}
         <nav className="hidden md:block">
           <ul className="flex items-center space-x-8">
             <li>
-              <Link href="/" className="text-sm text-text font-sans font-medium hover:text-primary">
+              <Link href="/" className="text-sm font-medium text-text hover:text-primary">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/about" className="text-sm text-text font-sans font-medium hover:text-primary">
+              <Link href="/about" className="text-sm font-medium text-text hover:text-primary">
                 About
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="text-sm text-text font-sans font-medium hover:text-primary">
+              <Link href="/contact" className="text-sm font-medium text-text hover:text-primary">
                 Contact/Support
               </Link>
             </li>
@@ -60,16 +53,27 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile Menu */}
-       <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+        <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="sm" className="px-2">
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="top" className="w-[180px] sm:w-[200px]">
+          <SheetContent side="left" className="w-[180px] sm:w-[150px] bg-white dark:bg-background">
             <SheetTitle></SheetTitle>
-            {/* <SheetDescription></SheetDescription> */}
+            {user ? (
+              <>
+                <Link className="h-9 w-9" href="/profile">
+                  <Avatar className="h-9 w-9 cursor-pointer border-2 border-primary transition-all hover:border-opacity-100">
+                    <AvatarImage src={user?.user_metadata.avatar_url} alt="User Avatar" />
+                    <AvatarFallback><img src="/default-avatar.jpg" alt="User Avatar"></img></AvatarFallback>
+                  </Avatar>
+                </Link>
+              </>
+            ) : (
+              <></>
+            )}
             <nav className="flex flex-col gap-4 mt-8">
               <Link
                 href="/"
@@ -92,60 +96,99 @@ export default function Navbar() {
               >
                 Contact/Support
               </Link>
+
+              {/* Mobile auth buttons */}
+              <div className="flex flex-col gap-2 mt-4 border-t border-gray-100 pt-4">
+                {user ? (
+                  <>
+                    {/* <Link
+                      href="/profile"
+                      className="text-sm font-medium text-text hover:text-primary px-2 py-1 rounded-md hover:bg-accent"
+                      onClick={() => setSheetOpen(false)}
+                    >
+                      Profile
+                    </Link> */}
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="justify-start w-20 rounded-xl h-8.5 transition-transform transform hover:scale-97"
+                      onClick={signOut}
+                    >
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/auth">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="rounded-xl transition-transform transform hover:scale-97"
+                        onClick={() => {
+                          setSheetOpen(false)
+                        }}
+                      >
+                        Login
+                      </Button>
+                    </Link>
+                    <Link href="/auth">
+                      <Button size="sm" className="h-8.5 px-2 rounded-xl transition-transform transform hover:scale-97" onClick={() => setSheetOpen(false)}>
+                        Sign Up
+                      </Button>
+                    </Link>
+                  </>
+                )}
+                {/* Theme Toggle Button - Always visible */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  // onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  onClick={toggleTheme}
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? <Sun className="h-5 w-5 fill-white" /> : <Moon className="h-5 w-5 fill-black" />}
+                </Button>
+              </div>
             </nav>
           </SheetContent>
         </Sheet>
 
-        <DropdownMenu open={open} onOpenChange={setOpen}>
-          <DropdownMenuTrigger asChild>
-            <button className="rounded-full outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-              <Avatar className="h-9 w-9 cursor-pointer border-2 border-primary transition-all hover:border-opacity-100">
-                <AvatarImage src={user?.user_metadata.avatar_url || "/default-avatar.jpg"} alt="User" />
-                {/* <AvatarFallback></AvatarFallback> */}
-              </Avatar>
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuItem style={{ display:  user?.email ? "flex" : "none"}} asChild>
-              <Link href="/profile" className="flex cursor-pointer items-center">
-                <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
+        {/* Auth Buttons - Desktop */}
+        <div className="hidden md:flex items-center space-x-3">
+          {user ? (
+            <>
+              <Button size="sm" variant="outline" onClick={signOut} className="rounded-xl transition-transform transform hover:scale-97">
+                Logout
+              </Button>
+              <Link href="/profile">
+                <Avatar className="h-9 w-9 cursor-pointer border-2 border-primary transition-all hover:border-opacity-100">
+                  <AvatarImage src={user?.user_metadata.avatar_url} alt="User Avatar" />
+                  <AvatarFallback><img src="/default-avatar.jpg" alt="User Avatar"></img></AvatarFallback>
+                </Avatar>
               </Link>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            {/* <DropdownMenuItem onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="cursor-pointer">
-              {theme === "dark" ? (
-                <>
-                  <Sun className="mr-2 h-4 w-4" />
-                  <span>Light Mode</span>
-                </>
-              ) : (
-                <>
-                  <Moon className="mr-2 h-4 w-4" />
-                  <span>Dark Mode</span>
-                </>
-              )}
-            </DropdownMenuItem> */}
-            <DropdownMenuItem onClick={toggleTheme} className="flex cursor-pointer items-center">
-              {theme === "dark" ? (
-                <>
-                  <Sun className="mr-2 h-4 w-4" />
-                  <span>Light Mode</span>
-                </>
-              ) : (
-                <>
-                  <Moon className="mr-2 h-4 w-4" />
-                  <span>Dark Mode</span>
-                </>
-              )}
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem style={{ display:  user?.email ? "flex" : "none"}} onClick={signOut} className="flex cursor-pointer items-center text-destructive focus:text-destructive">
-              <LogOut className="mr-2 h-4 w-4" />
-              <span>Log out</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            </>
+          ) : (
+            <>
+              <Link href="/auth">
+                <Button size="sm" variant="ghost" className="rounded-xl rounded-xl transition-transform transform hover:scale-97">
+                  Login
+                </Button>
+              </Link>
+              <Link href="/auth"><Button size="sm" className=" h-8.5 px-2 rounded-xl transition-transform transform hover:scale-97">Sign Up</Button></Link>
+            </>
+          )}
+
+          {/* Theme Toggle Button - Always visible */}
+          <Button
+            variant="ghost"
+            size="icon"
+            // onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </Button>
+        </div>
       </div>
     </header>
   )

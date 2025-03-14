@@ -81,11 +81,11 @@ export default function GenerateTab({ image, onGenerate, isGenerating, onBack })
       <Separator className="my-8" />
 
       <div className="flex justify-between">
-        <Button size="sm" variant="outline" onClick={onBack}>
+        <Button size="sm" variant="outline" onClick={onBack} className="transition-transform transform hover:scale-97">
           Back
         </Button>
         <motion.div whileTap={{ scale: 0.97 }}>
-          <Button size="sm" onClick={handleGenerate} disabled={isGenerating}>
+          <Button size="sm" onClick={handleGenerate} disabled={isGenerating} className="transition-transform transform hover:scale-97">
             {isGenerating ? (
               <>
                 <svg

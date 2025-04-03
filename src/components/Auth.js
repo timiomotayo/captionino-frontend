@@ -138,8 +138,7 @@ export default function AuthPage() {
                     </div>
                     <div>
                       <p className="text-gray-900 dark:text-gray-300 text-sm italic">
-                        "Captionino has completely transformed how I create content. The captions are so engaging and
-                        save me hours of work!"
+                        {"Captionino has completely transformed how I create content. The captions are so engaging and save me hours of work!"}
                       </p>
                       <p className="text-gray-900 dark:text-primary text-sm font-medium mt-2">Hannah Lawrence</p>
                       <p className="text-gray-600 dark:text-gray-300 text-xs">Social Media Influencer</p>

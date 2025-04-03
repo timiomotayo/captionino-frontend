@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 
 export default function GenerateTab({ image, onGenerate, isGenerating, onBack }) {
-  const [captionType, setCaptionType] = useState("social")
+  const [captionType, setCaptionType] = useState("social media")
   const [customInstructions, setCustomInstructions] = useState("")
 
   const handleGenerate = () => {
@@ -37,13 +37,13 @@ export default function GenerateTab({ image, onGenerate, isGenerating, onBack })
                 <SelectValue placeholder="Select caption type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="social">
+                <SelectItem value="social media">
                   <div className="flex items-center">
                     <Instagram className="mr-2 h-4 w-4" />
                     <span>Social Media</span>
                   </div>
                 </SelectItem>
-                <SelectItem value="product">
+                <SelectItem value="product description">
                   <div className="flex items-center">
                     <ShoppingBag className="mr-2 h-4 w-4" />
                     <span>Product Description</span>

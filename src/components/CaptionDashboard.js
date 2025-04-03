@@ -9,12 +9,16 @@ import ResultTab from "@/components/ResultTab"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 import Footer from "@/components/Footer"
+import { useAuth } from "@/context/AuthContext"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function CaptionDashboard() {
   const [activeTab, setActiveTab] = useState("upload")
   const [uploadedImage, setUploadedImage] = useState(null)
   const [generatedCaption, setGeneratedCaption] = useState("")
   const [isGenerating, setIsGenerating] = useState(false)
+  const { token, user } = useAuth();
+  const { toast } = useToast();
 
   const handleImageUpload = (file) => {
     const imageUrl = URL.createObjectURL(file)
@@ -26,27 +30,88 @@ export default function CaptionDashboard() {
   }
 
   const handleGenerate = async (captionType, customInstructions) => {
-    setIsGenerating(true)
+    
+    try {
+      // Get streaming url and image key (if for streaming) from generate-caption endpoint. 
+      const formData = new FormData();
+      formData.append('c_image', uploadedImage.file);
+      formData.append('c_type', captionType);
+      formData.append('c_instruction', customInstructions);
+      setIsGenerating(true);
+      const res = await fetch("https://dev-captionino-api.onrender.com/caption/generate-caption", {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
 
-    // Simulate API call
-    setTimeout(() => {
-      const captions = {
-        social:
-          "✨ Living my best life one adventure at a time! This moment was pure magic. #blessed #adventure #livinglife",
-        product:
-          "Introducing our premium product, designed with quality and style in mind. Elevate your everyday experience with this must-have item.",
-        travel:
-          "Discovered this hidden gem today! The perfect blend of beauty and tranquility. Can't wait to return! #travel #wanderlust",
-        food: "Indulged in this culinary masterpiece today. Every bite was a symphony of flavors! #foodie #delicious #yummy",
+      if (!user) {
+        toast({
+          title: "Error!",
+          description: "Could not generate caption, please sign in to continue.",
+          variant: "destructive",
+        })
+      } else {
+        if (res.status === 401) {
+          toast({
+            title: "Information!",
+            description: "You do not have an active subscription or free trials, please subscribe to continue generating captions.",
+            variant: "info",
+          })
+        }
+  
+        if (res.ok) {
+
+                              // OUTPUT
+          // const data = await res.json();
+          // setGeneratedCaption(data.caption.c_text || "");
+          // setActiveTab("result");
+          
+                              // STREAMING
+          setActiveTab("result");
+          const { url, image_key, c_type, has_credits } = await res.json();
+          let fullCaption = "";
+  
+          const source = new EventSource(url);
+          source.addEventListener("output", (evt) => {
+            setGeneratedCaption((prev) => {
+              const updated = prev + evt.data;
+              fullCaption = updated;
+              return updated;
+            });
+          });
+          source.addEventListener("done", async (evt) => {
+            console.log("stream is complete");
+            source.close();
+
+            await fetch("https://dev-captionino-api.onrender.com/caption/save-caption", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+              },
+              body: JSON.stringify({
+                image_key: image_key,
+                c_text: fullCaption,
+                c_type: c_type,
+                has_credits: has_credits
+              })
+            });
+          });
+        }
       }
 
-      const generatedText = captions[captionType] || captions.social
-      const customText = customInstructions ? `\n\nCustom touch: ${customInstructions}` : ""
-
-      setGeneratedCaption(generatedText + customText)
-      setIsGenerating(false)
-      setActiveTab("result")
-    }, 2000)
+    } catch (error) {
+      toast({
+        title: "Error!",
+        description: "Oops, something went wrong!",
+        variant: "destructive",
+      })
+      // console.error('Error generating caption:', error);
+    } finally {
+      setIsGenerating(false);
+    }
   }
 
   const resetProcess = () => {

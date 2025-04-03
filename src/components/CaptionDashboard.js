@@ -56,7 +56,7 @@ export default function CaptionDashboard() {
         if (res.status === 401) {
           toast({
             title: "Information!",
-            description: "You do not have an active subscription or free trials, please subscribe to continue generating captions.",
+            description: "You do not have an active subscription or credits, please subscribe to continue generating captions!",
             variant: "info",
           })
         }

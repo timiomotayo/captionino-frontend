@@ -23,7 +23,7 @@ export function AuthProvider({ children }) {
 
       const { data, error } = await supabase.auth.getSession();
       if (error) {
-        console.error("Error getting session:", error);
+        // console.error("Error getting session:", error);
         setIsLoading(false) // Set loading to false on error
         return;
       }
@@ -50,7 +50,7 @@ export function AuthProvider({ children }) {
         if (backendUserData) {
           setBackendUser(backendUserData.user);
         } else {
-          console.log("Backend user data is null");
+          // console.log("Backend user data is null");
         }
 
         // Attempt to save the user to the backend first, then fetch user data from backend
@@ -104,8 +104,13 @@ export function AuthProvider({ children }) {
       options: { redirectTo: `${window.location.origin}/dashboard` },
     });
 
+    // To remove the hash (#) appended to the url after auth. 
+    // if (window.location.hash) {
+    //   history.replaceState(null, null, window.location.pathname);
+    // }
+
     if (error) {
-      console.error("Error signing in:", error.message);
+      // console.error("Error signing in:", error.message);
       setIsLoading(false) // Set loading to false on error
     }
     
@@ -134,7 +139,7 @@ export function AuthProvider({ children }) {
   
     if (!response.ok) {
       const errorDetails = await response.text();
-      console.log(`Save user failed: ${errorDetails}`);
+      // console.log(`Save user failed: ${errorDetails}`);
     }
   
     const result = await response.json();
@@ -155,14 +160,14 @@ export function AuthProvider({ children }) {
   
       if (!response.ok) {
         const errorDetails = await response.text();
-        console.log(`Get user failed: ${response.status} - ${errorDetails}`);
+        // console.log(`Get user failed: ${response.status} - ${errorDetails}`);
         return null;
       }
   
       const result = await response.json();
       return result;
     } catch (error) {
-      console.error("Error fetching user:", error);
+      // console.error("Error fetching user:", error);
       return null;
     }
   }
@@ -172,14 +177,14 @@ export function AuthProvider({ children }) {
 
     const { error } = await supabase.auth.signOut();
     if (error) {
-      console.error("Error logging out:", error.message);
+      // console.error("Error logging out:", error.message);
     } else {
       setUser(null);
       setToken(null);
       sessionStorage.setItem("hasLoggedIn", "false");
       router.push("/");
       isUserSaved.current = false;
-      console.log("User logged out!");
+      // console.log("User logged out!");
     }
     setIsLoading(false) // Set loading to false when done signing out
   };

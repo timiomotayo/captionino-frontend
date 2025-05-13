@@ -96,7 +96,7 @@ export default function CaptionDashboard() {
             });
           });
           source.addEventListener("done", async (evt) => {
-            console.log("stream is complete");
+            // console.log("stream is complete");
             source.close();
 
             await fetch("https://dev-captionino-api.onrender.com/caption/save-caption", {

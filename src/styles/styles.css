@@ -1,20 +1,2 @@
-/* Caption list */
-.caption-list {
-  margin-top: 10px;
-}
 
-.caption-list-div {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #ccc;
-  padding: 0.5rem 0;
-  margin: 3px 0;
-}
-
-.caption-list-image {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  margin-right: 1rem;
-}
 

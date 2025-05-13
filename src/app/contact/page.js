@@ -74,7 +74,7 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-primary mt-0.5" />
                     <div>
                       <h3 className="font-medium text-text">Email</h3>
-                      <p className="text-gray-800 dark:text-gray-400">timiomotayo@yahoo.com</p>
+                      <p className="text-gray-800 dark:text-gray-400">captionino@gmail.com</p>
                     </div>
                   </div>
 

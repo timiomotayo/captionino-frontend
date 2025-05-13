@@ -11,7 +11,14 @@ export default function PrivacyPolicyPage() {
           <div className="mx-auto max-w-3xl space-y-8">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl text-text">Privacy Policy</h1>
-              <p className="text-gray-800 dark:text-gray-400">Last updated: {new Date().toLocaleDateString()}</p>
+              {/* <p className="text-gray-800 dark:text-gray-400">Last updated: {new Date().toLocaleDateString()}</p> */}
+              <p className="text-gray-800 dark:text-gray-400">
+                Last updated: {new Intl.DateTimeFormat("en-US", {
+                  month: "numeric",
+                  day: "numeric",
+                  year: "numeric"
+                }).format(new Date("2025-05-05"))}
+              </p>
             </div>
 
             <div className="space-y-6 text-gray-600">
@@ -112,7 +119,8 @@ export default function PrivacyPolicyPage() {
 
               <section>
                 <h2 className="text-xl font-bold text-text mb-2">10. Contact Us</h2>
-                <p className="text-gray-800 dark:text-gray-400">If you have any questions about this Privacy Policy, please contact us at privacy@captionino.com.</p>
+                {/* <p className="text-gray-800 dark:text-gray-400">If you have any questions about this Privacy Policy, please contact us at privacy@captionino.com.</p> */}
+                <p className="text-gray-800 dark:text-gray-400">If you have any questions about this Privacy Policy, please contact us at captionino@gmail.com.</p>
               </section>
             </div>
           </div>

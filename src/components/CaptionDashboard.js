@@ -33,12 +33,17 @@ export default function CaptionDashboard() {
     
     try {
       // Get streaming url and image key (if for streaming) from generate-caption endpoint. 
+
+      setGeneratedCaption(""); // Clear old caption just in case.
+  
       const formData = new FormData();
       formData.append('c_image', uploadedImage.file);
       formData.append('c_type', captionType);
       formData.append('c_instruction', customInstructions);
       setIsGenerating(true);
+
       const res = await fetch("https://dev-captionino-api.onrender.com/caption/generate-caption", {
+      // const res = await fetch("http://127.0.0.1:8000/caption/generate-caption", {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -48,15 +53,23 @@ export default function CaptionDashboard() {
 
       if (!user) {
         toast({
-          title: "Error!",
-          description: "Could not generate caption, please sign in to continue.",
+          title: "Error",
+          description: "Could not generate caption. Please sign in to continue.",
           variant: "destructive",
         })
       } else {
         if (res.status === 401) {
           toast({
-            title: "Information!",
-            description: "You do not have an active subscription or credits, please subscribe to continue generating captions!",
+            title: "Information",
+            description: "No active subscription or free trial. Please subscribe to continue generating caption.",
+            variant: "info",
+          })
+        }
+        
+        if (res.status === 429) {
+          toast({
+            title: "Information",
+            description: "Daily limit reached. Please try again tomorrow.",
             variant: "info",
           })
         }
@@ -70,7 +83,8 @@ export default function CaptionDashboard() {
           
                               // STREAMING
           setActiveTab("result");
-          const { url, image_key, c_type, has_credits } = await res.json();
+          const { url, image_key, c_type, has_active_sub, has_trials_left, updated_has_trials_left, updated_reached_daily_limit } = await res.json();
+
           let fullCaption = "";
   
           const source = new EventSource(url);
@@ -86,6 +100,7 @@ export default function CaptionDashboard() {
             source.close();
 
             await fetch("https://dev-captionino-api.onrender.com/caption/save-caption", {
+              // await fetch("http://127.0.0.1:8000/caption/save-caption", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -95,17 +110,36 @@ export default function CaptionDashboard() {
                 image_key: image_key,
                 c_text: fullCaption,
                 c_type: c_type,
-                has_credits: has_credits
+                has_active_sub: has_active_sub,
+                has_trials_left: has_trials_left
               })
             });
+            
+            // Here
+            // Show toasts first
+            if (updated_has_trials_left === false) {
+              toast({
+                title: "Information",
+                description: "Free trial exhausted.",
+                variant: "warning",
+              });
+            }
+
+            if (updated_reached_daily_limit === true) {
+              toast({
+                title: "Information",
+                description: "Daily limit reached.",
+                variant: "warning",
+              });
+            }
           });
         }
       }
 
     } catch (error) {
       toast({
-        title: "Error!",
-        description: "Oops, something went wrong!",
+        title: "Error",
+        description: "Oops! Something went wrong.",
         variant: "destructive",
       })
       // console.error('Error generating caption:', error);

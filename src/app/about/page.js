@@ -41,10 +41,10 @@ export default function AboutPage() {
 
                 <h2 className="text-2xl font-bold text-text">Meet the Developer</h2>
                 <div className="flex flex-col md:flex-row gap-8 items-center">
-                  <div className="w-40 h-40 rounded-full overflow-hidden bg-gray-200">
+                  <div className="w-50 h-40 rounded-full overflow-hidden bg-gray-200">
                     <img
                         // src="/placeholder.svg?height=160&width=160"
-                        src="/duty.jpg?height=160&width=160"
+                        src="/developer-image.jpg?height=160&width=160"
                         alt="Timi Omotayo"
                         className="w-full h-full object-cover"
                       />
@@ -53,7 +53,7 @@ export default function AboutPage() {
                     <h3 className="text-xl font-bold">Timi Omotayo</h3>
                     <p className="text-gray-800 dark:text-gray-400">
                       Timi is a passionate software developer with expertise in AI and web technologies. With a
-                      background in computer science and a love for creative solutions, Timi developed Captionino to
+                      background in Financial Accounting and a love for creative solutions, Timi developed Captionino to
                       solve the common challenge of caption creation that many content creators face.
                     </p>
                     <div className="flex flex-wrap gap-3">

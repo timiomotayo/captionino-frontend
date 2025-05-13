@@ -329,8 +329,7 @@ export default function SubscriptionContent({ subscriptionData }) {
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 dark:text-gray-400">
-                After using your {subscriptionData.totalFreeTrials} free captions, you'll need to subscribe to continue generating captions. Your
-                generated captions will remain accessible.
+                {"After using your {subscriptionData.totalFreeTrials} free captions, you'll need to subscribe to continue generating captions. Your generated captions will remain accessible."}
               </p>
             </CardContent>
           </Card>
@@ -340,8 +339,7 @@ export default function SubscriptionContent({ subscriptionData }) {
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 dark:text-gray-400">
-                Yes, you can cancel your subscription at any time. You'll continue to have access until the end of your
-                billing period.
+                {"Yes, you can cancel your subscription at any time. You'll continue to have access until the end of your billing period."}
               </p>
             </CardContent>
           </Card>
@@ -357,7 +355,7 @@ export default function SubscriptionContent({ subscriptionData }) {
           </Card>
           <Card className="border border-gray-200 dark:border-gray-900">
             <CardHeader>
-              <CardTitle className="text-lg">What's the daily caption limit?</CardTitle>
+              <CardTitle className="text-lg">{"What's the daily caption limit?"}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 dark:text-gray-400">

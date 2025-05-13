@@ -44,7 +44,7 @@ export default function AboutPage() {
                   <div className="w-50 h-40 rounded-full overflow-hidden bg-gray-200">
                     <img
                         // src="/placeholder.svg?height=160&width=160"
-                        src="/developer2.jpg?height=160&width=160"
+                        src="/developer-image.jpg?height=160&width=160"
                         alt="Timi Omotayo"
                         className="w-full h-full object-cover"
                       />

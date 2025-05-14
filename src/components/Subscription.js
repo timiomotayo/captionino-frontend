@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Check, Crown, AlertCircle, Zap, CreditCard, X, Delete, Sparkles, ImageIcon } from "lucide-react"
+import { Check, Crown, AlertCircle, Zap, CreditCard, XCircle, CheckCheck, Sparkles, ImageIcon } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { Progress } from "@/components/ui/progress"
 import { ToastAction } from "@/components/ui/toast"
@@ -190,8 +190,7 @@ export default function SubscriptionContent({ subscriptionData }) {
                     </>
                   ) : (
                     <>
-                      {/* <Delete className="mr-2 h-5 w-5" />   */}
-                      <X className="mr-2 w-5 h-5" />
+                      <XCircle className="mr-2 w-5 h-5" />
                       Cancel Subscription
                     </>
                   )}
@@ -304,7 +303,7 @@ export default function SubscriptionContent({ subscriptionData }) {
                 </>
               ) : subscriptionData.subscriptionStatus === "ACTIVE" ? (
                 <>
-                  <Check className="h-4 w-4" />
+                  <CheckCheck className="h-4 w-4" />
                   Currently Subscribed
                 </>
               ) : (
@@ -329,7 +328,7 @@ export default function SubscriptionContent({ subscriptionData }) {
             </CardHeader>
             <CardContent>
               <p className="text-gray-600 dark:text-gray-400">
-                {"After using your {subscriptionData.totalFreeTrials} free captions, you'll need to subscribe to continue generating captions. Your generated captions will remain accessible."}
+                {`After using your ${subscriptionData.totalFreeTrials} free captions, you'll need to subscribe to continue generating captions. Your generated captions will remain accessible.`}
               </p>
             </CardContent>
           </Card>

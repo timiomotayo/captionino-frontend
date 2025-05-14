@@ -18,7 +18,7 @@ export default function SubscriptionPage() {
         name: user?.user_metadata?.name,
         email: user?.email,
         subscriptionStatus: backendUser?.subscription_status,
-        subscriptionEndsAt: null,
+        subscriptionEndsAt: "2025-06-14",
         freeTrialsRemaining: backendUser?.trials_left ?? "...",
         totalFreeTrials: process.env.NEXT_PUBLIC_TOTAL_FREE_TRIALS,
         captionsToday: backendUser?.daily_usage ?? "...",

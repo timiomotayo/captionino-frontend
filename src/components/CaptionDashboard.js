@@ -117,7 +117,7 @@ export default function CaptionDashboard() {
             
             // Here
             // Show toasts first
-            if (updated_has_trials_left === false) {
+            if (updated_has_trials_left === false && has_active_sub === false) {
               toast({
                 title: "Information",
                 description: "Free trial exhausted.",

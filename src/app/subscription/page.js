@@ -17,8 +17,9 @@ export default function SubscriptionPage() {
       setSubscriptionData({
         name: user?.user_metadata?.name,
         email: user?.email,
+        subscriptionId: backendUser?.lemonsqueezy_subscription_id,
         subscriptionStatus: backendUser?.subscription_status,
-        subscriptionEndsAt: "2025-06-14",
+        subscriptionEndsAt: backendUser?.subscription_ends_at,
         freeTrialsRemaining: backendUser?.trials_left ?? "...",
         totalFreeTrials: process.env.NEXT_PUBLIC_TOTAL_FREE_TRIALS,
         captionsToday: backendUser?.daily_usage ?? "...",

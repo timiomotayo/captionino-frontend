@@ -97,7 +97,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white">Multiple Styles</h3>
               <p className="text-center text-gray-800 dark:text-gray-400">
-                Choose from social media, product, travel, and food caption styles
+                Choose from social media, product description, travel, and food caption styles {/* and extract text from receipt*/}
               </p>
             </div>
           </div>

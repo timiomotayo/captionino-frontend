@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Wand2, Instagram, ShoppingBag, Plane, Utensils } from "lucide-react"
+import { Wand2, Instagram, ShoppingBag, Plane, Utensils, ReceiptText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -61,6 +61,12 @@ export default function GenerateTab({ image, onGenerate, isGenerating, onBack })
                     <span>Food</span>
                   </div>
                 </SelectItem>
+                {/* <SelectItem value="receipt">
+                  <div className="flex items-center">
+                    <ReceiptText className="mr-2 h-4 w-4" />
+                    <span>Receipt</span>
+                  </div>
+                </SelectItem> */}
               </SelectContent>
             </Select>
           </div>

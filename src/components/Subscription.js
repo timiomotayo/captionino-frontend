@@ -5,17 +5,20 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Check, Crown, AlertCircle, Zap, CreditCard, XCircle, CheckCheck, Sparkles, ImageIcon } from "lucide-react"
+import { Check, Crown, AlertCircle, Zap, CreditCard, XCircle, CheckCheck, Sparkles, ImageIcon, RefreshCcw, PlayCircle } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { Progress } from "@/components/ui/progress"
 import { ToastAction } from "@/components/ui/toast"
 import { formatCurrency } from "@/utils/formatCurrency";
+import { useAuth } from "@/context/AuthContext"
 
 export default function SubscriptionContent({ subscriptionData }) {
   const { toast } = useToast()
   const [isCancelLoading, setIsCancelLoading] = useState(false)
+  const [isResumeLoading, setIsResumeLoading] = useState(false)
   const [isSubscribeLoading, setIsSubscribeLoading] = useState(false)
   const subscribeRef = useRef(null);
+  const { token } = useAuth();
 
   const scrollToSubscribe = () => {
     const subscribeButton = document.getElementById('subscribeButton');
@@ -30,15 +33,9 @@ export default function SubscriptionContent({ subscriptionData }) {
   const handleSubscribe = () => {
     setIsSubscribeLoading(true)
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubscribeLoading(false)
-      toast({
-        title: "Success",
-        description: "Subscription was Successful.",
-        variant: "success",
-      })
-    }, 1500)
+    window.location.href = "https://captionino.lemonsqueezy.com/buy/d1d79f4d-515e-434f-89e6-3985a5bf41c5";
+
+    setIsSubscribeLoading(false)
   }
 
   const handleCancelSubscription = () => {
@@ -69,22 +66,117 @@ export default function SubscriptionContent({ subscriptionData }) {
       ),
       // duration: Infinity,
       duration: Number.POSITIVE_INFINITY,
-      className: "bg-secondary dark:bg-slate-900 text-text", // Customize toast background here
+      className: "bg-secondary dark:bg-slate-900 text-text",
     })
   }
 
-  const proceedCancel = () => {
+  const proceedCancel = async () => {
     setIsCancelLoading(true)
 
-    setTimeout(() => {
-      setIsCancelLoading(false)
+    try {
+      const res = await fetch("http://127.0.0.1:8000/subscription/cancel", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({ 
+          subscription_id: subscriptionData.subscriptionId,
+          action: "cancel"
+        })
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) throw new Error(data.message || "Cancel failed")
+
       toast({
         title: "Done",
         description: "Subscription canceled successfully.",
         variant: "info",
       })
-    }, 1500)
+    } catch (err) {
+      toast({
+        title: "Error",
+        // description: err.message || "Could not cancel subscription.",
+        description: "Could not cancel subscription.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsCancelLoading(false)
+    }
+}
+
+
+  const handleResumeSubscription = () => {
+    toast({
+      title: "Resume Subscription?",
+      description: "Are you sure you want to resume your subscription?",
+      action: (
+        <div className="flex gap-2 mt-3">
+          <ToastAction
+            altText="Confirm resume"
+            onClick={() => {
+              proceedResume()
+            }}
+            className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded"
+          >
+            Yes
+          </ToastAction>
+          <ToastAction
+            altText="Dismiss"
+            onClick={() => {
+              // No action needed — will dismiss automatically
+            }}
+            className="bg-gray-200 hover:bg-gray-300 text-black px-3 py-1 rounded"
+          >
+            No
+          </ToastAction>
+        </div>
+      ),
+      // duration: Infinity,
+      duration: Number.POSITIVE_INFINITY,
+      className: "bg-secondary dark:bg-slate-900 text-text",
+    })
   }
+
+  const proceedResume = async () => {
+    setIsResumeLoading(true)
+
+    try {
+      const res = await fetch("http://127.0.0.1:8000/subscription/cancel", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({ 
+          subscription_id: subscriptionData.subscriptionId,
+          action: "resume"
+        })
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) throw new Error(data.message || "Resume failed")
+
+      toast({
+        title: "Done",
+        description: "Subscription resumed successfully.",
+        variant: "info",
+      })
+    } catch (err) {
+      toast({
+        title: "Error",
+        // description: err.message || "Could not resume subscription.",
+        description: "Could not resume subscription.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsResumeLoading(false)
+    }
+}
+
 
   return (
     <div className="mx-auto max-w-3xl space-y-8">
@@ -116,30 +208,38 @@ export default function SubscriptionContent({ subscriptionData }) {
               <Badge variant="secondary" className="ml-2 border-2 border-amber-100 pointer-events-none">
                 Free Plan
               </Badge>
-            ) : subscriptionData.subscriptionStatus === "PENDING" ? (
+            ) : subscriptionData.subscriptionStatus === "CANCELLED" ? (
               <Badge
                 variant="warning"
                 className="ml-2 border-2 border-amber-100 bg-yellow-500 text-white pointer-events-none"
               >
-                Pending
+                Cancelled
               </Badge>
-            ) : (
+            ) : subscriptionData.subscriptionStatus === "EXPIRED" ? (
               <Badge
                 variant="destructive"
                 className="ml-2 border-2 border-amber-100 bg-red-600 text-white pointer-events-none"
               >
                 Expired
               </Badge>
+            ): (
+              <>
+              
+              </>
             )}
           </CardTitle>
           <CardDescription className="text-gray-600 dark:text-gray-400">
-            {subscriptionData.subscriptionStatus === "ACTIVE"
-              ? `Your subscription is active until ${new Date(subscriptionData.subscriptionEndsAt).toLocaleDateString()}`
-              : "You are currently on free plan"}
+            {subscriptionData.subscriptionStatus === "ACTIVE" || subscriptionData.subscriptionStatus === "CANCELLED"
+              ? `Your subscription is active until ${
+                  subscriptionData.subscriptionEndsAt
+                    ? new Date(subscriptionData.subscriptionEndsAt).toLocaleDateString()
+                    : "XXXX-XX-XX"
+                }`
+              : "You are currently on the free plan"}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {subscriptionData.subscriptionStatus === "ACTIVE" ? (
+          {subscriptionData.subscriptionStatus === "ACTIVE" || subscriptionData.subscriptionStatus === "CANCELLED" ? (
             <div className="space-y-4">
               <div>
                 <div className="flex justify-between text-sm mb-1">
@@ -161,10 +261,10 @@ export default function SubscriptionContent({ subscriptionData }) {
                 <Button
                   variant="outline"
                   className="bg-primary mx-auto text-white hover:text-gray-900 dark:hover:text-text :hover:bg-background"
-                  onClick={handleCancelSubscription}
-                  disabled={isCancelLoading}
+                  onClick={subscriptionData.subscriptionStatus === "ACTIVE" ? handleCancelSubscription : subscriptionData.subscriptionStatus === "CANCELLED" ? handleResumeSubscription : ""}
+                  disabled={subscriptionData.subscriptionStatus === "ACTIVE" ? isCancelLoading : subscriptionData.subscriptionStatus === "CANCELLED" ? isResumeLoading : ""}
                 >
-                  {isCancelLoading ? (
+                  {isCancelLoading || isResumeLoading ? (
                     <>
                       <svg
                         className="mr-2 h-4 w-4 animate-spin"
@@ -190,8 +290,22 @@ export default function SubscriptionContent({ subscriptionData }) {
                     </>
                   ) : (
                     <>
-                      <XCircle className="mr-2 w-5 h-5" />
-                      Cancel Subscription
+                      {subscriptionData.subscriptionStatus === "ACTIVE" ? (
+                        <>
+                          <XCircle className="mr-2 w-5 h-5" />
+                          Cancel Subscription
+                        </>
+                      ): subscriptionData.subscriptionStatus === "CANCELLED" ? (
+                        <>
+                          <PlayCircle className="mr-2 w-5 h-5" />
+                          Resume Subscription
+                        </>
+                      ): (
+                        <>
+
+                        </>
+                      )}
+                      
                     </>
                   )}
                 </Button>
@@ -221,9 +335,9 @@ export default function SubscriptionContent({ subscriptionData }) {
 
               {/* Advert */}
               <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-                <p className="text-amber-800 dark:text-amber-200 text-sm flex items-center">
-                  <Zap className="h-4 w-4 mr-2" />
-                  You have {subscriptionData.freeTrialsRemaining} free caption generations left. <a id="subscribeButton" onClick={scrollToSubscribe} className="cursor-pointer hover:text-primary dark:hover:text-foreground underline-offset-2 hover:underline ml-1 px-1"> Subscribe </a> to get
+                <p className="text-amber-800 dark:text-amber-200 text-sm">
+                  <Zap className="inline-block h-4 w-4 mr-2 align-text-bottom" />
+                  You have {subscriptionData.freeTrialsRemaining} free caption generations left. <a id="subscribeButton" onClick={scrollToSubscribe} className="cursor-pointer text-primary hover:text-muted-foreground dark:text-foreground dark:hover:text-primary underline-offset-2 hover:underline mx-1"> Subscribe </a> to get
                   unlimited access!
                 </p>
               </div>

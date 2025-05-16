@@ -129,7 +129,7 @@ export default function Navbar() {
                         className="gap-1.5 border-amber-200 hover:border-amber-300 hover:bg-amber-50 dark:hover:bg-secondary"
                       >
                         <Crown className="h-4 w-4 text-amber-500" />
-                        {subscriptionData.subscriptionStatus === "ACTIVE" ? <span>Pro</span> : <span>Upgrade</span>}
+                        {subscriptionData.subscriptionStatus === "ACTIVE" || subscriptionData.subscriptionStatus === "CANCELLED"  ? <span>Pro</span> : <span>Upgrade</span>}
                         {subscriptionData.subscriptionStatus !== "ACTIVE" && subscriptionData.freeTrialsRemaining > 0 && (
                           <Badge variant="outline" className="ml-1 text-xs">
                             {subscriptionData.freeTrialsRemaining}/{subscriptionData.totalFreeTrials}
@@ -207,7 +207,7 @@ export default function Navbar() {
                   className="gap-1.5 border-amber-200 hover:border-amber-300 hover:bg-amber-50 dark:hover:bg-secondary"
                 >
                   <Crown className="h-4 w-4 text-amber-500" />
-                  {subscriptionData.subscriptionStatus === "ACTIVE" ? <span>Pro</span> : <span>Upgrade</span>}
+                  {subscriptionData.subscriptionStatus === "ACTIVE" || subscriptionData.subscriptionStatus === "CANCELLED" ? <span>Pro</span> : <span>Upgrade</span>}
                   {subscriptionData.subscriptionStatus !== "ACTIVE" && subscriptionData.freeTrialsRemaining > 0 && (
                     <Badge variant="outline" className="ml-1 text-xs">
                       {subscriptionData.freeTrialsRemaining}/{subscriptionData.totalFreeTrials}

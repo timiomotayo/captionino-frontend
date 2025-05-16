@@ -74,7 +74,7 @@ export default function SubscriptionContent({ subscriptionData }) {
     setIsCancelLoading(true)
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/subscription/cancel", {
+      const res = await fetch("https://dev-captionino-api.onrender.com/subscription/cancel", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -144,7 +144,7 @@ export default function SubscriptionContent({ subscriptionData }) {
     setIsResumeLoading(true)
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/subscription/cancel", {
+      const res = await fetch("https://dev-captionino-api.onrender.com/subscription/cancel", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

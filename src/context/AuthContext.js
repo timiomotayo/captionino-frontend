@@ -149,8 +149,8 @@ export function AuthProvider({ children }) {
 
   async function getUserFromBackend(accessToken) {
     try {
-      // const response = await fetch("https://dev-captionino-api.onrender.com/user/get_user/", {
-      const response = await fetch("http://127.0.0.1:8000/user/get_user/", {
+      const response = await fetch("https://dev-captionino-api.onrender.com/user/get_user/", {
+      // const response = await fetch("http://127.0.0.1:8000/user/get_user/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

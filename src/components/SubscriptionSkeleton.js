@@ -37,7 +37,7 @@ export default function SubscriptionSkeleton() {
           <div className="space-y-4">
             <div>
               <div className="flex justify-between text-sm mb-1">
-                <span>Free trials remaining</span>
+                {/* <span>Free trials remaining</span> */}
                 <Skeleton className="h-4 w-16 rounded-md" />
               </div>
               <Skeleton className="h-2 w-full rounded-md" />

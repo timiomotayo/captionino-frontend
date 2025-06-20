@@ -63,7 +63,7 @@ export function AuthProvider({ children }) {
 
             toast({
               title: "Error",
-              description: "Something went wrong on the server. Please try logging in again later.",
+              description: "Something went wrong. Please try logging in again later.",
               variant: "destructive",
             })
 
@@ -128,7 +128,7 @@ export function AuthProvider({ children }) {
       };
 
       const response = await fetch("https://dev-captionino-api.onrender.com/auth/save_user", {
-        // const response = await fetch("http://127.0.0.1:8000/auth/save_user", {
+      // const response = await fetch("http://127.0.0.1:8000/auth/save_user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

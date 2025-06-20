@@ -32,7 +32,7 @@ export default function CaptionDashboard() {
   const handleGenerate = async (captionType, customInstructions) => {
     
     try {
-      // Get streaming url and image key (if for streaming) from generate-caption endpoint. 
+      // Get streaming url and image key from generate-caption endpoint (if for streaming). 
 
       setGeneratedCaption(""); // Clear old caption just in case.
   
@@ -83,10 +83,12 @@ export default function CaptionDashboard() {
           
                               // STREAMING
           setActiveTab("result");
-          const { url, image_key, c_type, has_active_sub, has_trials_left, updated_has_trials_left, updated_reached_daily_limit } = await res.json();
+          // const { url, image_key, c_type, has_active_sub, has_trials_left, updated_has_trials_left, updated_reached_daily_limit } = await res.json();
+          const { url, image_key, c_type, has_active_sub, has_trials_left, reached_daily_limit } = await res.json();
 
           let fullCaption = "";
-  
+          
+          // When stream start output.
           const source = new EventSource(url);
           source.addEventListener("output", (evt) => {
             setGeneratedCaption((prev) => {
@@ -95,40 +97,55 @@ export default function CaptionDashboard() {
               return updated;
             });
           });
+
+          // When stream completed.
           source.addEventListener("done", async (evt) => {
             // console.log("stream is complete");
             source.close();
 
-            await fetch("https://dev-captionino-api.onrender.com/caption/save-caption", {
-              // await fetch("http://127.0.0.1:8000/caption/save-caption", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
-              },
-              body: JSON.stringify({
-                image_key: image_key,
-                c_text: fullCaption,
-                c_type: c_type,
-                has_active_sub: has_active_sub,
-                has_trials_left: has_trials_left
-              })
-            });
-            
-            // Here
-            // Show toasts first
-            if (updated_has_trials_left === false && has_active_sub === false) {
-              toast({
-                title: "Information",
-                description: "Free trial exhausted.",
-                variant: "warning",
-              });
-            }
+            if (fullCaption !== "") {
 
-            if (updated_reached_daily_limit === true) {
+              const res = await fetch("https://dev-captionino-api.onrender.com/caption/save-caption", {
+              // const res = await fetch("http://127.0.0.1:8000/caption/save-caption", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                  image_key: image_key,
+                  c_text: fullCaption,
+                  c_type: c_type,
+                  has_active_sub: has_active_sub,
+                  has_trials_left: has_trials_left,
+                  reached_daily_limit: reached_daily_limit
+                })
+              });
+
+              // Get data to determine toast to show.
+              const { updated_reached_daily_limit, updated_has_trials_left } = await res.json()
+              
+              // Here
+              // Show toasts first
+              if (updated_has_trials_left === false && has_active_sub === false) {
+                toast({
+                  title: "Information",
+                  description: "Free trial exhausted.",
+                  variant: "warning",
+                });
+              }
+  
+              if (updated_reached_daily_limit === true) {
+                toast({
+                  title: "Information",
+                  description: "Daily limit reached.",
+                  variant: "warning",
+                });
+              }
+            } else {
               toast({
                 title: "Information",
-                description: "Daily limit reached.",
+                description: "Could not generate caption, please try again later",
                 variant: "warning",
               });
             }

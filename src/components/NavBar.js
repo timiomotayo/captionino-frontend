@@ -38,8 +38,8 @@ export default function Navbar() {
   }
 
   return (
-    <header className="border-b border-gray-200 dark:border-gray-900 bg-white dark:bg-background shadow-sm">
-      <div className="container mx-auto flex h-12 items-center justify-between px-4 fixed top-0 left-0 w-full z-50 bg-white dark:bg-background shadow-md">
+    <header className="border-b border-gray-200 dark:border-gray-900 bg-white dark:bg-background shadow-sm fixed top-0 left-0 w-full z-50 bg-white dark:bg-background">
+      <div className="container mx-auto flex h-12 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <motion.div initial={{ rotate: -10 }} animate={{ rotate: 0 }} transition={{ duration: 0.5 }}>
             <div className="flex h-8 w-8 items-center justify-center rounded-lg text-primary-foreground transition-transform transform hover:scale-97">

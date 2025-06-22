@@ -47,7 +47,7 @@ export default function ProfilePage() {
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
 
-      <main className="flex-1 py-8">
+      <main className="flex-1 py-8 pt-20">
         <div className="px-4 md:px-6">
           {profileData ? <ProfileContent profileData={profileData} /> : <ProfileSkeleton />}
         </div>

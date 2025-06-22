@@ -5,6 +5,8 @@ import CaptionDashboard from '@/components/CaptionDashboard';
 export default function DashboardPage() {
   
     return (
-      <CaptionDashboard />
+      <div className="pt-12">
+        <CaptionDashboard />
+      </div>
     );
 }

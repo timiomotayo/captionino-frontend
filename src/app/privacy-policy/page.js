@@ -6,7 +6,7 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen flex flex-col bg-white dark:bg-background">
       <Navbar />
 
-      <main className="flex-1 py-12">
+      <main className="flex-1 py-12 pt-20">
         <div className="px-4 md:px-6">
           <div className="mx-auto max-w-3xl space-y-8">
             <div className="space-y-2">

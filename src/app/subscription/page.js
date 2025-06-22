@@ -32,7 +32,7 @@ export default function SubscriptionPage() {
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
 
-      <main className="flex-1 py-12">
+      <main className="flex-1 py-12 pt-20">
         <div className="container px-4 md:px-6">
           {subscriptionData ? <SubscriptionContent subscriptionData={subscriptionData} /> : <SubscriptionSkeleton />}
         </div>

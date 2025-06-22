@@ -389,7 +389,8 @@ export default function SubscriptionContent({ subscriptionData }) {
             <Button
               className="w-full gap-2"
               onClick={handleSubscribe}
-              disabled={isSubscribeLoading || subscriptionData.subscriptionStatus === "ACTIVE"}
+              // disabled={isSubscribeLoading || subscriptionData.subscriptionStatus === "ACTIVE"}
+              disabled
             >
               {isSubscribeLoading ? (
                 <>

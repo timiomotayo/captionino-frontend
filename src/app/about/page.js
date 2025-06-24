@@ -10,7 +10,7 @@ export default function AboutPage() {
       <Navbar />
 
       <main className="flex-1">
-        <section className="py-12 md:py-20">
+        <section className="py-12 md:py-20 pt-20">
           <div className="px-4 md:px-6">
             <div className="mx-auto max-w-3xl space-y-8">
               <div className="space-y-2 text-center">

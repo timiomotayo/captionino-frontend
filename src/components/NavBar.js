@@ -35,7 +35,11 @@ export default function Navbar() {
     subscriptionStatus: backendUser?.subscription_status,
     freeTrialsRemaining: backendUser?.trials_left,
     totalFreeTrials: process.env.NEXT_PUBLIC_TOTAL_FREE_TRIALS,
+    totalCaptionsLimit: process.env.NEXT_PUBLIC_CAPTIONS_LIMIT,
+    totalDailyUsage: backendUser?.daily_usage
   }
+
+  const isPro = ["ACTIVE", "CANCELLED"].includes(subscriptionData.subscriptionStatus);
 
   return (
     <header className="border-b border-gray-200 dark:border-gray-900 bg-white dark:bg-background shadow-sm fixed top-0 left-0 w-full z-50 bg-white dark:bg-background">
@@ -129,12 +133,18 @@ export default function Navbar() {
                         className="gap-1.5 border-amber-200 hover:border-amber-300 hover:bg-amber-50 dark:hover:bg-secondary"
                       >
                         <Crown className="h-4 w-4 text-amber-500" />
-                        {subscriptionData.subscriptionStatus === "ACTIVE" || subscriptionData.subscriptionStatus === "CANCELLED"  ? <span>Pro</span> : <span>Upgrade</span>}
-                        {subscriptionData.subscriptionStatus !== "ACTIVE" && subscriptionData.freeTrialsRemaining > 0 && (
-                          <Badge variant="outline" className="ml-1 text-xs">
-                            {subscriptionData.freeTrialsRemaining}/{subscriptionData.totalFreeTrials}
-                          </Badge>
-                        )}
+                          <span>
+                            {isPro ? "Pro" : "Upgrade"}
+                          </span>
+                          {isPro ? (
+                            <Badge variant="outline" className="ml-1 text-xs">
+                              {subscriptionData.totalDailyUsage}/{subscriptionData.totalCaptionsLimit}
+                            </Badge>
+                          ) : subscriptionData.freeTrialsRemaining > 0 && (
+                            <Badge variant="outline" className="ml-1 text-xs">
+                              {subscriptionData.freeTrialsRemaining}/{subscriptionData.totalFreeTrials}
+                            </Badge>
+                          )}
                       </Button>
                     </Link>
 
@@ -207,12 +217,18 @@ export default function Navbar() {
                   className="gap-1.5 border-amber-200 hover:border-amber-300 hover:bg-amber-50 dark:hover:bg-secondary"
                 >
                   <Crown className="h-4 w-4 text-amber-500" />
-                  {subscriptionData.subscriptionStatus === "ACTIVE" || subscriptionData.subscriptionStatus === "CANCELLED" ? <span>Pro</span> : <span>Upgrade</span>}
-                  {subscriptionData.subscriptionStatus !== "ACTIVE" && subscriptionData.freeTrialsRemaining > 0 && (
-                    <Badge variant="outline" className="ml-1 text-xs">
-                      {subscriptionData.freeTrialsRemaining}/{subscriptionData.totalFreeTrials}
-                    </Badge>
-                  )}
+                    <span>
+                      {isPro ? "Pro" : "Upgrade"}
+                    </span>
+                    {isPro ? (
+                      <Badge variant="outline" className="ml-1 text-xs">
+                        {subscriptionData.totalDailyUsage}/{subscriptionData.totalCaptionsLimit}
+                      </Badge>
+                    ) : subscriptionData.freeTrialsRemaining > 0 && (
+                      <Badge variant="outline" className="ml-1 text-xs">
+                        {subscriptionData.freeTrialsRemaining}/{subscriptionData.totalFreeTrials}
+                      </Badge>
+                    )}
                 </Button>
               </Link>
               <Button size="sm" variant="outline" onClick={signOut} className="rounded-xl transition-transform transform hover:scale-97">

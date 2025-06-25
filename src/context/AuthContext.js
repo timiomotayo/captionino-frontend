@@ -119,16 +119,14 @@ export function AuthProvider({ children }) {
 
 
   async function saveUserToBackend(accessToken, user) {
+    // Get user's timezone from browser
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-      // Get user's timezone from browser
-      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-      const payload = {
+    const payload = {
         timezone: timeZone,
       };
 
-      const response = await fetch("https://dev-captionino-api.onrender.com/auth/save_user", {
-      // const response = await fetch("http://127.0.0.1:8000/auth/save_user", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/save_user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -149,8 +147,7 @@ export function AuthProvider({ children }) {
 
   async function getUserFromBackend(accessToken) {
     try {
-      const response = await fetch("https://dev-captionino-api.onrender.com/user/get_user/", {
-      // const response = await fetch("http://127.0.0.1:8000/user/get_user/", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/get_user/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

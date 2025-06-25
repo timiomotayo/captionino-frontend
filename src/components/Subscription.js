@@ -33,9 +33,17 @@ export default function SubscriptionContent({ subscriptionData }) {
   const handleSubscribe = () => {
     setIsSubscribeLoading(true)
 
-    window.location.href = "https://captionino.lemonsqueezy.com/buy/d1d79f4d-515e-434f-89e6-3985a5bf41c5";
+    // window.location.href = process.env.NEXT_PUBLIC_SUBSCRIPTION_URL
+    setTimeout(() => {
+      toast({
+        title: "Information",
+        description: "This feature is not available at the moment.",
+        variant: "info",
+      })
 
-    setIsSubscribeLoading(false)
+      setIsSubscribeLoading(false)
+    }, 3000)
+
   }
 
   const handleCancelSubscription = () => {
@@ -74,7 +82,7 @@ export default function SubscriptionContent({ subscriptionData }) {
     setIsCancelLoading(true)
 
     try {
-      const res = await fetch("https://dev-captionino-api.onrender.com/subscription/cancel", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SUBSCRIPTION_CANCEL_URL}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -144,7 +152,7 @@ export default function SubscriptionContent({ subscriptionData }) {
     setIsResumeLoading(true)
 
     try {
-      const res = await fetch("https://dev-captionino-api.onrender.com/subscription/cancel", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SUBSCRIPTION_CANCEL_URL}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -389,8 +397,7 @@ export default function SubscriptionContent({ subscriptionData }) {
             <Button
               className="w-full gap-2"
               onClick={handleSubscribe}
-              // disabled={isSubscribeLoading || subscriptionData.subscriptionStatus === "ACTIVE"}
-              disabled
+              disabled={isSubscribeLoading || subscriptionData.subscriptionStatus === "ACTIVE"}
             >
               {isSubscribeLoading ? (
                 <>

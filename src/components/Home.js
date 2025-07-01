@@ -119,13 +119,13 @@ export default function Home() {
             <div className="flex flex-col justify-between space-y-4 rounded-lg border border-gray-200 dark:border-gray-900 p-6 shadow-sm bg-white dark:bg-background">
               <div className="space-y-2">
                 <p className="text-gray-800 dark:text-gray-400">
-                  {"\"Captionino has saved me so much time creating content for my social media. The captions are creative and engaging!\""}
+                  {"\"Captionino is like having a creative partner in my pocket. This app just gets it. Short, punchy captions that actually sound like me, love it!\""}
                 </p>
               </div>
               <div className="flex items-center space-x-4">
                 <img src="/default-avatar.jpg" alt="User avatar" className="rounded-full bg-gray-200 h-10 w-10"></img>
                 <div>
-                  <p className="text-sm font-medium text-text">Sarah Johnson</p>
+                  <p className="text-sm font-medium text-text">Lina Moretti</p>
                   <p className="text-sm text-gray-500">Social Media Influencer</p>
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function Home() {
               <div className="flex items-center space-x-4">
               <img src="/default-avatar.jpg" alt="User avatar" className="rounded-full bg-gray-200 h-10 w-10"></img>
                 <div>
-                  <p className="text-sm font-medium text-text">Michael Chen</p>
+                  <p className="text-sm font-medium text-text">Daniel Alvarez</p>
                   <p className="text-sm text-gray-500">E-commerce Entrepreneur</p>
                 </div>
               </div>

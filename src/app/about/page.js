@@ -82,7 +82,7 @@ export default function AboutPage() {
                       </div> */}
                     </div>
                     <div className="flex space-x-4">
-                      <Link href="https://github.com/OLUWATIMILEHIN-THEOPHILUS" target="_blank" rel="noopener noreferrer">
+                      <Link href="https://github.com/timiomotayo" target="_blank" rel="noopener noreferrer">
                         <Button variant="ghost" size="icon">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@ export default function AboutPage() {
                           <span className="sr-only">GitHub</span>
                         </Button>
                       </Link>
-                      <Link href="https://www.linkedin.com/in/omotayo-oluwatimilehin" target="_blank" rel="noopener noreferrer">
+                      <Link href="https://www.linkedin.com/in/timiomotayo" target="_blank" rel="noopener noreferrer">
                         <Button variant="ghost" size="icon">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -168,7 +168,7 @@ export default function AboutPage() {
                 <h2 className="text-2xl font-bold text-text">Our Values</h2>
                 <ul className="list-circle dark:marker:text-white pl-6 space-y-2">
                   <li>
-                    <strong className="inline text-gray-800 dark:text-gray-400">Innovation:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">{"We continuously improve our AI models to provide the best caption generation experience."}</p>
+                    <strong className="inline text-gray-800 dark:text-gray-400">Innovation:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">{"The AI models are continuously improved to provide the best caption generation experience."}</p>
                   </li>
                   <li>
                     <strong className="inline text-gray-800 dark:text-gray-400">Accessibility:</strong> <p className="inline text-gray-800 dark:text-gray-400 font-normal">{"We believe powerful AI tools should be accessible to everyone, not just large corporations."}</p>

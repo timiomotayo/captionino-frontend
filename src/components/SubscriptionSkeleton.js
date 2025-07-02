@@ -18,7 +18,7 @@ export default function SubscriptionSkeleton() {
       <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-text">Subscription</h1>
         <p className="mx-auto max-w-[700px] text-gray-600 dark:text-gray-400 md:text-xl">
-          Unlock unlimited caption generation with Captionino Pro
+          Unlock fast, daily access to engaging captions with Captionino Pro
         </p>
       </div>
 

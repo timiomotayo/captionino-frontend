@@ -35,6 +35,7 @@ export default function RootLayout({ children }) {
             document.documentElement.classList.toggle("dark", theme === "dark");
           })();}`}
         </script>
+        <meta name="google-site-verification" content="hbfAsKdNQKfe52ZSKPH_io-VfJaeRXJ2osvfRGad760" />
         </head>
         <body
           className={`${inter.className} ${geistSans.variable} ${geistMono.variable} antialiased`}

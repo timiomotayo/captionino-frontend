@@ -191,7 +191,7 @@ export default function SubscriptionContent({ subscriptionData }) {
       <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-text">Subscription</h1>
         <p className="mx-auto max-w-[700px] text-gray-600 dark:text-gray-400 md:text-xl">
-          Unlock unlimited caption generation with Captionino Pro
+          Unlock fast, daily access to engaging captions with Captionino Pro
         </p>
       </div>
 
@@ -346,7 +346,7 @@ export default function SubscriptionContent({ subscriptionData }) {
                 <p className="text-amber-800 dark:text-amber-200 text-sm">
                   <Zap className="inline-block h-4 w-4 mr-2 align-text-bottom" />
                   You have {subscriptionData.freeTrialsRemaining} free caption generations left. <a id="subscribeButton" onClick={scrollToSubscribe} className="cursor-pointer text-primary hover:text-muted-foreground dark:text-foreground dark:hover:text-primary underline-offset-2 hover:underline mx-1"> Subscribe </a> to get
-                  unlimited access!
+                  daily access!
                 </p>
               </div>
             </div>
@@ -374,7 +374,7 @@ export default function SubscriptionContent({ subscriptionData }) {
             <ul className="space-y-3 mb-6">
               <li className="flex items-start">
                 <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Unlimited caption generation</span>
+                <span>Fast, daily access to engaging captions</span>
               </li>
               <li className="flex items-start">
                 <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />

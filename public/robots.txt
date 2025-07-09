@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Disallow access to private pages
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /subscription
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow access to public pages
+Allow: /
+Allow: /about
+Allow: /contact
+Allow: /terms
+Allow: /privacy-policy
+Allow: /auth
+
+# Sitemap
+Sitemap: https://captionino.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1

@@ -10,38 +10,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Label } from "@/components/ui/label"
 import { Mail, MessageSquare, Phone } from "lucide-react"
 
-export const metadata = {
-  title: "Contact Captionino - Get Support for AI Caption Generator",
-  description: "Need help with Captionino? Contact our support team for assistance with AI caption generation, troubleshooting, or general inquiries. We're here to help!",
-  keywords: "captionino contact, AI caption generator support, help, customer service, technical support",
-  openGraph: {
-    title: "Contact Captionino - Get Support for AI Caption Generator",
-    description: "Need help with Captionino? Contact our support team for assistance with AI caption generation, troubleshooting, or general inquiries.",
-    url: "https://captionino.com/contact",
-    siteName: "Captionino",
-    images: [
-      {
-        url: "https://captionino.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Contact Captionino Support",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Contact Captionino - Get Support",
-    description: "Need help with Captionino? Contact our support team for assistance with AI caption generation.",
-    images: ["https://captionino.com/og-image.jpg"],
-    creator: "@captionino",
-  },
-  alternates: {
-    canonical: "https://captionino.com/contact",
-  },
-};
-
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",

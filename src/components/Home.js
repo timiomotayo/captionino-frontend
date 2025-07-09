@@ -54,8 +54,11 @@ export default function Home() {
               <div className="aspect-video overflow-hidden rounded-xl bg-gray-100 border border-gray-200 shadow-xl transition-transform transform hover:scale-97">
                 <img
                   src="/placeholder.svg?height=500&width=800"
-                  alt="Captionino dashboard preview"
+                  alt="Captionino AI Caption Generator Dashboard - Upload, Generate, and Get Perfect Captions"
                   className="w-full h-full object-cover"
+                  width="800"
+                  height="500"
+                  loading="lazy"
                 />
               </div>
             </motion.div>
@@ -123,7 +126,14 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex items-center space-x-4">
-                <img src="/default-avatar.jpg" alt="User avatar" className="rounded-full bg-gray-200 h-10 w-10"></img>
+                <img 
+                  src="/default-avatar.jpg" 
+                  alt="Lina Moretti - Social Media Influencer using Captionino" 
+                  className="rounded-full bg-gray-200 h-10 w-10"
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                />
                 <div>
                   <p className="text-sm font-medium text-text">Lina Moretti</p>
                   <p className="text-sm text-gray-500">Social Media Influencer</p>
@@ -137,7 +147,14 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex items-center space-x-4">
-              <img src="/default-avatar.jpg" alt="User avatar" className="rounded-full bg-gray-200 h-10 w-10"></img>
+              <img 
+                src="/default-avatar.jpg" 
+                alt="Daniel Alvarez - E-commerce Entrepreneur using Captionino" 
+                className="rounded-full bg-gray-200 h-10 w-10"
+                width="40"
+                height="40"
+                loading="lazy"
+              />
                 <div>
                   <p className="text-sm font-medium text-text">Daniel Alvarez</p>
                   <p className="text-sm text-gray-500">E-commerce Entrepreneur</p>

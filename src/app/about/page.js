@@ -4,6 +4,38 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { User, Mail, MapPin, ExternalLink } from "lucide-react"
 
+export const metadata = {
+  title: "About Captionino - AI Caption Generator | Meet the Developer",
+  description: "Learn about Captionino's mission to revolutionize content creation with AI. Meet Timi Omotayo, the developer behind the AI-powered caption generation platform.",
+  keywords: "about captionino, AI caption generator developer, Timi Omotayo, AI content creation, caption generator team",
+  openGraph: {
+    title: "About Captionino - AI Caption Generator | Meet the Developer",
+    description: "Learn about Captionino's mission to revolutionize content creation with AI. Meet Timi Omotayo, the developer behind the AI-powered caption generation platform.",
+    url: "https://captionino.com/about",
+    siteName: "Captionino",
+    images: [
+      {
+        url: "https://captionino.com/developer-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Timi Omotayo - Captionino Developer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Captionino - AI Caption Generator",
+    description: "Learn about Captionino's mission to revolutionize content creation with AI. Meet the developer behind the platform.",
+    images: ["https://captionino.com/developer-image.jpg"],
+    creator: "@captionino",
+  },
+  alternates: {
+    canonical: "https://captionino.com/about",
+  },
+};
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-background">
@@ -43,10 +75,11 @@ export default function AboutPage() {
                 <div className="flex flex-col md:flex-row gap-8 items-center">
                   <div className="w-50 h-40 rounded-full overflow-hidden bg-gray-200">
                     <img
-                        // src="/placeholder.svg?height=160&width=160"
-                        src="/developer-image.jpg?height=160&width=160"
-                        alt="Timi Omotayo"
+                        src="/developer-image.jpg"
+                        alt="Timi Omotayo - Captionino Developer and AI Engineer"
                         className="w-full h-full object-cover"
+                        width="160"
+                        height="160"
                       />
                   </div>
                   <div className="space-y-4">
@@ -61,25 +94,10 @@ export default function AboutPage() {
                         <User className="mr-2 h-4 w-4" />
                         <span>Software Developer</span>
                       </div>
-                      {/* <div className="flex items-center text-sm text-muted-foreground">
-                        <Mail className="mr-2 h-4 w-4" />
-                        <span>timiomotayo@yahoo.com</span>
-                      </div> */}
                       <div className="flex items-center text-sm text-gray-800 dark:text-gray-400">
                         <MapPin className="mr-2 h-4 w-4" />
                         <span>Lagos, Nigeria</span>
                       </div>
-                      {/* <div className="flex items-center text-sm text-muted-foreground">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        <a
-                          href="https://timiomotayo.dev"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-primary"
-                        >
-                          timiomotayo.dev
-                        </a>
-                      </div> */}
                     </div>
                     <div className="flex space-x-4">
                       <Link href="https://github.com/timiomotayo" target="_blank" rel="noopener noreferrer">
@@ -122,25 +140,6 @@ export default function AboutPage() {
                           <span className="sr-only">LinkedIn</span>
                         </Button>
                       </Link>
-                      {/* <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                        <Button variant="ghost" size="icon">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="h-5 w-5"
-                          >
-                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                          </svg>
-                          <span className="sr-only">Twitter</span>
-                        </Button>
-                      </Link> */}
                       <Link href="mailto:timiomotayo@yahoo.com">
                         <Button variant="ghost" size="icon">
                           <svg
@@ -190,6 +189,31 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About Captionino",
+            "description": "Learn about Captionino's mission to revolutionize content creation with AI",
+            "url": "https://captionino.com/about",
+            "mainEntity": {
+              "@type": "Person",
+              "name": "Timi Omotayo",
+              "jobTitle": "Software Developer",
+              "description": "Passionate software developer with expertise in AI and web technologies",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Lagos",
+                "addressCountry": "Nigeria"
+              },
+              "sameAs": [
+                "https://github.com/timiomotayo",
+                "https://www.linkedin.com/in/timiomotayo"
+              ]
+            }
+          })}
+        </script>
       </main>
 
       <Footer />

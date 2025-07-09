@@ -1,6 +1,38 @@
 import Navbar from "@/components/NavBar"
 import Footer from "@/components/Footer"
 
+export const metadata = {
+  title: "Terms of Service - Captionino AI Caption Generator",
+  description: "Read Captionino's Terms of Service to understand your rights and responsibilities when using our AI caption generation platform.",
+  keywords: "captionino terms of service, AI caption generator terms, user agreement, terms and conditions",
+  openGraph: {
+    title: "Terms of Service - Captionino AI Caption Generator",
+    description: "Read Captionino's Terms of Service to understand your rights and responsibilities when using our AI caption generation platform.",
+    url: "https://captionino.com/terms",
+    siteName: "Captionino",
+    images: [
+      {
+        url: "https://captionino.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Captionino Terms of Service",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service - Captionino",
+    description: "Read Captionino's Terms of Service to understand your rights and responsibilities.",
+    images: ["https://captionino.com/og-image.jpg"],
+    creator: "@captionino",
+  },
+  alternates: {
+    canonical: "https://captionino.com/terms",
+  },
+};
+
 export default function TermsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-background">

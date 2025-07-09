@@ -1,6 +1,38 @@
 import Navbar from "@/components/NavBar"
 import Footer from "@/components/Footer"
 
+export const metadata = {
+  title: "Privacy Policy - Captionino AI Caption Generator",
+  description: "Learn how Captionino protects your privacy and handles your data. Our comprehensive privacy policy explains data collection, usage, and security measures.",
+  keywords: "captionino privacy policy, data protection, AI caption generator privacy, user data security",
+  openGraph: {
+    title: "Privacy Policy - Captionino AI Caption Generator",
+    description: "Learn how Captionino protects your privacy and handles your data. Our comprehensive privacy policy explains data collection, usage, and security measures.",
+    url: "https://captionino.com/privacy-policy",
+    siteName: "Captionino",
+    images: [
+      {
+        url: "https://captionino.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Captionino Privacy Policy",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy - Captionino",
+    description: "Learn how Captionino protects your privacy and handles your data.",
+    images: ["https://captionino.com/og-image.jpg"],
+    creator: "@captionino",
+  },
+  alternates: {
+    canonical: "https://captionino.com/privacy-policy",
+  },
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-background">

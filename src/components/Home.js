@@ -105,7 +105,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-12 md:py-20 bg-gray-50 dark:bg-background">
+      <section className="py-12 md:py-20 border-t border-gray-100 dark:border-gray-900 bg-gray-50 dark:bg-background">
         <div className="px-4 md:px-6"> {/**container  */}
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
@@ -160,8 +160,9 @@ export default function Home() {
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
               <Link href="/dashboard">
-                <Button size="sm" className="w-full rounded-xl transition-transform transform hover:scale-97">
+                <Button size="sm" className="w-full rounded-xl transition-transform transform hover:scale-97 gap-2">
                   Try Captionino Now
+                  <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
             </div>

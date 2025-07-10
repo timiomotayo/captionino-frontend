@@ -9,6 +9,9 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
         
           <div className="flex space-x-6">
+            <Link href="/about" className="text-sm text-gray-800 dark:text-gray-400 hover:text-primary dark:hover:text-foreground underline-offset-2 hover:underline">
+              About Us
+            </Link>
             <Link href="/privacy-policy" className="text-sm text-gray-800 dark:text-gray-400 hover:text-primary dark:hover:text-foreground underline-offset-2 hover:underline">
               Privacy Policy
             </Link>
@@ -18,7 +21,7 @@ export default function Footer() {
           </div>
           <div className="mb-4 md:mb-0">
             <p className="text-sm text-gray-500">
-              © {new Date().getFullYear()} Captionino. All rights reserved.
+              © {new Date().getFullYear()} NinoApps. All rights reserved.
             </p>
           </div>
         </div>

@@ -32,11 +32,11 @@ export default function AuthPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-background flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-background flex flex-col bg-[url('/background_auth_dark.png')] dark:bg-[url('/background_auth.png')] bg-cover bg-center bg-no-repeat">
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <Card className="border-gray-200 dark:bg-gray-900 shadow-lg overflow-hidden">
+            <Card className="border-gray-200 dark:bg-gray-900 shadow-lg overflow-hidden bg-white">
               <CardContent className="p-0">
                 <div className="p-6 pb-0">
                   <div className="flex items-center gap-2 mb-6">
@@ -127,7 +127,7 @@ export default function AuthPage() {
                 </div>
 
                 {/* Testimonial */}
-                <div className="bg-gray-50 dark:bg-gray-800 p-6 border-t border-gray-200">
+                <div className="bg-gray-50 dark:bg-gray-800/30 p-6 border-t border-gray-200">
                   <div className="flex items-start gap-4">
                     <div className="h-10 w-10 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
                       <img

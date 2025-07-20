@@ -13,6 +13,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 import { Badge } from "@/components/ui/badge"
 import NavBarSkeleton from "@/components/NavBarSkeleton"
 
+
 export default function Navbar() {
   // const { theme, setTheme } = useTheme()
   const { user, signOut, backendUser, isLoading } = useAuth();
@@ -147,16 +148,6 @@ export default function Navbar() {
                           )}
                       </Button>
                     </Link>
-
-                    {/* Profile */}
-                    
-                    {/* <Link
-                      href="/profile"
-                      className="text-sm font-medium text-text hover:text-primary px-2 py-1 rounded-md hover:bg-accent"
-                      onClick={() => setSheetOpen(false)}
-                    >
-                      Profile
-                    </Link> */}
                     
                     <Button
                       size="sm"

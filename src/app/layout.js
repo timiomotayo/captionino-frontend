@@ -1,13 +1,20 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Lexend, Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import '../styles/styles.css';
 import { AuthProvider } from "@/context/AuthContext";
-import { Inter } from "next/font/google";
 import ThemeProvider from "@/context/ThemeContext";
 // import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 
+
+// Fonts
 const inter = Inter({ subsets: ["latin"] })
+
+// const inter = Inter({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-inter',s
+// })
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,9 +26,27 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const lexend = Lexend({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-lexend',
+})
+
+const josefin = Josefin_Sans({
+  subsets: ['latin'],
+  variable: '--font-josefin',
+  display: 'swap',
+})
+
+
+
+// New metadata;
 export const metadata = {
-  title: "Captionino",
-  description: "Generate engaging captions for your images with AI Caption Generator by Timi Omotayo",
+  title: {
+    template: '%s - CaptioNino',
+    default: 'CaptioNino - Caption generation made easy for social media',
+  },
+  description: "Generate engaging captions for your images with AI Caption Generator",
 };
 
 export default function RootLayout({ children }) {
@@ -38,7 +63,7 @@ export default function RootLayout({ children }) {
         <meta name="google-site-verification" content="hbfAsKdNQKfe52ZSKPH_io-VfJaeRXJ2osvfRGad760" />
         </head>
         <body
-          className={`${inter.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${inter.className} ${geistSans.variable} ${geistMono.variable} ${lexend.variable} ${josefin.variable} antialiased`}
         >
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             {children}

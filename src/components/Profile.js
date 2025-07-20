@@ -3,12 +3,12 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+// import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Separator } from "@/components/ui/separator"
+// import { Separator } from "@/components/ui/separator"
 import { Camera, Save, User, Bell, History, ImageIcon, Lock, Image } from "lucide-react"
 import { useAuth } from "@/context/AuthContext"
 
@@ -84,10 +84,10 @@ export default function ProfileContent({ profileData: initialProfileData }) {
                   <Lock className="mr-2 h-4 w-4 md:inline-block hidden" />
                   Security
                 </TabsTrigger> */}
-          <TabsTrigger value="notifications" className="data-[state=active]:bg-profile">
+          {/* <TabsTrigger value="notifications" className="data-[state=active]:bg-profile">
             <Bell className="mr-2 h-4 w-4 md:inline-block hidden" />
             Notifications
-          </TabsTrigger>
+          </TabsTrigger> */}
           <TabsTrigger value="activity" className="data-[state=active]:bg-profile">
             <History className="mr-2 h-4 w-4 md:inline-block hidden" />
             Activity
@@ -161,7 +161,7 @@ export default function ProfileContent({ profileData: initialProfileData }) {
               </form>
             </CardContent>
             <CardFooter className="flex justify-end">
-              <Button
+              {/* <Button
                 size="sm"
                 onClick={handleSave}
                 disabled={saving}
@@ -197,7 +197,7 @@ export default function ProfileContent({ profileData: initialProfileData }) {
                     Save Changes
                   </>
                 )}
-              </Button>
+              </Button> */}
             </CardFooter>
           </Card>
         </TabsContent>
@@ -244,7 +244,7 @@ export default function ProfileContent({ profileData: initialProfileData }) {
           </Card>
         </TabsContent> */}
 
-        <TabsContent value="notifications" className="mt-6">
+        {/* <TabsContent value="notifications" className="mt-6">
           <Card className="border border-gray-200 dark:border-gray-900">
             <CardHeader>
               <CardTitle className="text-text">Notification Preferences</CardTitle>
@@ -340,7 +340,7 @@ export default function ProfileContent({ profileData: initialProfileData }) {
               </Button>
             </CardFooter>
           </Card>
-        </TabsContent>
+        </TabsContent> */}
 
         <TabsContent value="activity" className="mt-6">
           <Card className="border border-gray-200 dark:border-gray-900">
@@ -387,7 +387,7 @@ export default function ProfileContent({ profileData: initialProfileData }) {
                 )}
               </div>
             </CardContent>
-            <CardFooter className="flex justify-center">
+            {/* <CardFooter className="flex justify-center">
               <Button
                 className="border border-gray-200 dark:border-gray-900 rounded-xl transition-transform transform hover:scale-97"
                 size="sm"
@@ -395,7 +395,7 @@ export default function ProfileContent({ profileData: initialProfileData }) {
               >
                 View All Activity
               </Button>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </TabsContent>
       </Tabs>

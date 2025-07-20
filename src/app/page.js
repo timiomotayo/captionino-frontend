@@ -1,7 +1,8 @@
 "use client";
 import { useAuth } from "@/context/AuthContext";
 import DashboardPage from './dashboard/page';
-import Home from '../components/Home';
+// import Home from '../components/Home';
+import HomePage from "@/components/HomePage";
 import Loading from "@/components/Loading";
 import { useState, useEffect } from "react";
 
@@ -32,7 +33,8 @@ export default function LandingPage() {
           <DashboardPage />
         </>
       ) : (
-        <Home />
+        // <Home />
+        <HomePage />
       )}
     </>
   );

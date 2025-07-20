@@ -20,7 +20,27 @@ module.exports = {
       fontFamily: {
         sans: "var(--font-geist-sans), sans-serif",
         mono: "var(--font-geist-mono), monospace",
+        lexend: "var(--font-lexend), monospace",
+        josefin: "var(--font-josefin), sans-serif",
       },
+    //   fontSize: {
+    //   xs: ['0.75rem', '1rem'],
+    //   sm: ['0.875rem', '1.5rem'],
+    //   base: ['1rem', '1.75rem'],
+    //   lg: ['1.125rem', '2rem'],
+    //   xl: ['1.25rem', '2rem'],
+    //   '2xl': ['1.5rem', '2rem'],
+    //   '3xl': ['2rem', '2.5rem'],
+    //   '4xl': ['2.5rem', '3.5rem'],
+    //   '5xl': ['3rem', '3.5rem'],
+    //   '6xl': ['3.75rem', '1'],
+    //   '7xl': ['4.5rem', '1.1'],
+    //   '8xl': ['6rem', '1'],
+    //   '9xl': ['8rem', '1'],
+    // },
+    //   borderRadius: {
+    //   '4xl': '2rem',
+    // },
       colors: {
         profile: "oklch(var(--profile))", /* custom */
         text: "oklch(var(--text))", /* custom */

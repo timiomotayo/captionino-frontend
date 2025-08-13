@@ -1,21 +1,26 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { Popover, PopoverButton, PopoverBackdrop, PopoverPanel } from '@headlessui/react'
-import clsx from 'clsx'
-import { Button } from '@/components/Button'
-import { Container } from '@/components/Container'
-import { NavLink } from '@/components/NavLink'
-import { Logo } from './Logo'
-import { Moon, Sun, Menu, Crown } from "lucide-react"
-import { useTheme } from "@/context/ThemeContext"
+import Link from "next/link";
+import {
+  Popover,
+  PopoverButton,
+  PopoverBackdrop,
+  PopoverPanel,
+} from "@headlessui/react";
+import clsx from "clsx";
+import { Button } from "@/components/Button";
+import { Container } from "@/components/Container";
+import { NavLink } from "@/components/NavLink";
+import { Logo } from "./Logo";
+import { Moon, Sun, Menu, Crown } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 function MobileNavLink({ href, children }) {
   return (
     <PopoverButton as={Link} href={href} className="block w-full p-2">
       {children}
     </PopoverButton>
-  )
+  );
 }
 
 function MobileNavIcon({ open }) {
@@ -30,23 +35,23 @@ function MobileNavIcon({ open }) {
       <path
         d="M0 1H14M0 7H14M0 13H14"
         className={clsx(
-          'origin-center transition',
-          open && 'scale-90 opacity-0',
+          "origin-center transition",
+          open && "scale-90 opacity-0"
         )}
       />
       <path
         d="M2 2L12 12M12 2L2 12"
         className={clsx(
-          'origin-center transition',
-          !open && 'scale-90 opacity-0',
+          "origin-center transition",
+          !open && "scale-90 opacity-0"
         )}
       />
     </svg>
-  )
+  );
 }
 
 function MobileNavigation() {
-  const { theme, toggleTheme } = useTheme();  
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <Popover>
@@ -62,7 +67,7 @@ function MobileNavigation() {
       />
       <PopoverPanel
         transition
-        className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5 data-closed:scale-95 data-closed:opacity-0 data-enter:duration-150 data-enter:ease-out data-leave:duration-100 data-leave:ease-in"
+        className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-background p-4 text-lg tracking-tight text-text shadow-xl ring-1 ring-slate-900/5 data-closed:scale-95 data-closed:opacity-0 data-enter:duration-150 data-enter:ease-out data-leave:duration-100 data-leave:ease-in"
       >
         <MobileNavLink href="/">Home</MobileNavLink>
         <MobileNavLink href="/about">About</MobileNavLink>
@@ -78,15 +83,18 @@ function MobileNavigation() {
           onClick={toggleTheme}
           aria-label="Toggle theme"
         >
-          {theme === "dark" ? <Sun className="h-5 w-5 fill-white" /> : <Moon className="h-5 w-5 fill-black" />}
+          {theme === "dark" ? (
+            <Sun className="h-5 w-5 fill-white" />
+          ) : (
+            <Moon className="h-5 w-5 fill-black" />
+          )}
         </Button>
       </PopoverPanel>
     </Popover>
-  )
+  );
 }
 
 export function Header() {
-
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -126,12 +134,15 @@ export function Header() {
               aria-label="Toggle theme"
               className="hidden md:inline cursor-pointer transition-transform transform hover:scale-90"
             >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>         
-
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </Button>
           </div>
         </nav>
       </Container>
     </header>
-  )
+  );
 }
